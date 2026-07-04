@@ -1,0 +1,1667 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Madcxvii STUDIO</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background-color: #080808;
+      background-image: 
+        linear-gradient(rgba(0, 255, 65, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 65, 0.03) 1px, transparent 1px);
+      background-size: 30px 30px;
+      color: #e0e0e0;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 900px;
+      margin-top: 20px;
+    }
+
+    /* ===== TOPBAR ===== */
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(10, 10, 10, 0.95);
+      border: 1px solid #1a1a1a;
+      border-radius: 8px;
+      padding: 12px 20px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .topbar-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-top {
+      background: transparent;
+      border: 1px solid;
+      padding: 8px 16px;
+      font-size: 0.8rem;
+      font-family: 'Courier New', monospace;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: all 0.25s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: bold;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: inherit;
+    }
+
+    .btn-roblox-top {
+      border-color: #ff6b00;
+      color: #ff6b00;
+    }
+    .btn-roblox-top:hover {
+      background: rgba(255, 107, 0, 0.1);
+      box-shadow: 0 0 15px rgba(255, 107, 0, 0.3);
+    }
+
+    .btn-wa-top {
+      border-color: #25D366;
+      color: #25D366;
+    }
+    .btn-wa-top:hover {
+      background: rgba(37, 211, 102, 0.1);
+      box-shadow: 0 0 15px rgba(37, 211, 102, 0.3);
+    }
+
+    .btn-premium-top {
+      border-color: #FFD700;
+      color: #FFD700;
+      animation: glowGold 2s ease-in-out infinite;
+    }
+    @keyframes glowGold {
+      0%, 100% { box-shadow: 0 0 5px rgba(255, 215, 0, 0.2); }
+      50% { box-shadow: 0 0 15px rgba(255, 215, 0, 0.5); }
+    }
+    .btn-premium-top:hover {
+      background: rgba(255, 215, 0, 0.1);
+    }
+
+    .btn-login-top {
+      border-color: #4285F4;
+      color: #4285F4;
+    }
+    .btn-login-top:hover {
+      background: rgba(66, 133, 244, 0.1);
+    }
+
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.8rem;
+    }
+
+    .user-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 2px solid #00ff41;
+      background: #1a1a1a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+    }
+
+    .user-email {
+      color: #ccc;
+    }
+
+    .user-badge {
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-weight: bold;
+    }
+
+    .badge-owner {
+      background: linear-gradient(135deg, #FFD700, #FFA500);
+      color: #000;
+    }
+
+    .badge-premium {
+      background: linear-gradient(135deg, #00ff41, #00cc33);
+      color: #000;
+    }
+
+    .badge-free {
+      background: #333;
+      color: #888;
+    }
+
+    .limit-info {
+      color: #ff6b00;
+      font-size: 0.75rem;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+      padding: 20px;
+      border: 1px solid rgba(0, 255, 65, 0.3);
+      border-radius: 8px;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(10px);
+    }
+
+    header h1 {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 2.2rem;
+      color: #00ff41;
+      text-shadow: 0 0 10px rgba(0, 255, 65, 0.5), 0 0 20px rgba(0, 255, 65, 0.3);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    header p {
+      font-family: 'Courier New', Courier, monospace;
+      color: #888;
+      margin-top: 8px;
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.85; }
+    }
+
+    /* ===== LOGIN PANEL ===== */
+    .login-panel {
+      background: rgba(10, 10, 10, 0.9);
+      border: 1px solid #00ff41;
+      border-radius: 12px;
+      padding: 30px;
+      margin-bottom: 20px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(0, 255, 65, 0.1);
+    }
+
+    .login-panel h2 {
+      color: #00ff41;
+      font-family: 'Courier New', monospace;
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .login-input {
+      width: 100%;
+      max-width: 400px;
+      background: #1a1a1a;
+      border: 1px solid #333;
+      border-radius: 8px;
+      padding: 14px 18px;
+      color: #e0e0e0;
+      font-family: 'Courier New', monospace;
+      font-size: 1rem;
+      margin-bottom: 15px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .login-input:focus { border-color: #00ff41; }
+    .login-input::placeholder { color: #555; }
+
+    .login-btn {
+      width: 100%;
+      max-width: 400px;
+      background: transparent;
+      border: 2px solid #00ff41;
+      color: #00ff41;
+      padding: 14px;
+      font-family: 'Courier New', monospace;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: all 0.25s ease;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: bold;
+    }
+    .login-btn:hover {
+      background: rgba(0, 255, 65, 0.1);
+      box-shadow: 0 0 20px rgba(0, 255, 65, 0.2);
+    }
+
+    .login-note {
+      color: #555;
+      font-size: 0.8rem;
+      margin-top: 15px;
+      font-family: 'Courier New', monospace;
+    }
+
+    /* ===== UPLOAD ===== */
+    .upload-area {
+      border: 2px dashed #00ff41;
+      border-radius: 12px;
+      padding: 50px 30px;
+      text-align: center;
+      transition: all 0.3s ease;
+      background: rgba(10, 10, 10, 0.8);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .upload-area::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(0, 255, 65, 0.05), transparent);
+      transition: left 0.5s;
+    }
+
+    .upload-area:hover::before { left: 100%; }
+
+    .upload-area:hover {
+      background: rgba(15, 15, 15, 0.9);
+      box-shadow: 0 0 30px rgba(0, 255, 65, 0.15);
+      border-color: #00ff41;
+    }
+
+    .upload-area.dragover {
+      background: rgba(0, 255, 65, 0.05);
+      box-shadow: 0 0 40px rgba(0, 255, 65, 0.2);
+    }
+
+    .upload-icon { font-size: 3rem; margin-bottom: 15px; opacity: 0.8; }
+
+    .upload-area p { color: #aaa; font-size: 1rem; line-height: 1.6; }
+
+    .upload-area .highlight {
+      color: #00ff41; font-weight: bold;
+      text-decoration: underline; text-underline-offset: 3px;
+    }
+
+    .upload-area small { display: block; margin-top: 10px; color: #555; font-size: 0.8rem; }
+
+    /* ===== INFO PANEL ===== */
+    .info-panel {
+      background: rgba(10, 10, 10, 0.9);
+      border: 1px solid #00ff41;
+      border-radius: 8px;
+      padding: 20px;
+      margin-top: 20px;
+      display: none;
+      box-shadow: 0 0 15px rgba(0, 255, 65, 0.1);
+    }
+
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    .info-row:last-child { border-bottom: none; }
+
+    .highlight-row {
+      background: rgba(0, 255, 65, 0.05);
+      margin: 10px -20px 0;
+      padding: 15px 20px;
+      border-top: 1px solid rgba(0, 255, 65, 0.3);
+      border-bottom: 1px solid rgba(0, 255, 65, 0.3);
+    }
+
+    .label { color: #888; font-family: 'Courier New', monospace; font-size: 0.9rem; }
+    .value { color: #00ff41; font-family: 'Courier New', monospace; font-weight: bold; font-size: 0.95rem; }
+
+    .copy-btn {
+      background: transparent; border: 1px solid #00ff41; color: #00ff41;
+      padding: 4px 12px; font-family: 'Courier New', monospace;
+      font-size: 0.75rem; cursor: pointer; border-radius: 4px;
+      margin-left: 10px; transition: all 0.2s;
+    }
+    .copy-btn:hover { background: #00ff41; color: #000; }
+
+    /* ===== CONTROLS ===== */
+    .controls {
+      background: rgba(10, 10, 10, 0.9);
+      border: 1px solid #1a1a1a;
+      border-radius: 8px;
+      padding: 25px;
+      margin-top: 20px;
+      display: none;
+    }
+
+    .slider-container { margin-bottom: 25px; }
+    .slider-container label {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 12px; font-family: 'Courier New', monospace;
+      color: #ccc; font-size: 0.95rem;
+    }
+
+    #speedValue {
+      color: #00ff41; font-weight: bold; font-size: 1.1rem;
+      text-shadow: 0 0 5px rgba(0, 255, 65, 0.3);
+    }
+
+    input[type=range] {
+      -webkit-appearance: none; width: 100%;
+      background: transparent; margin: 10px 0;
+    }
+    input[type=range]:focus { outline: none; }
+
+    input[type=range]::-webkit-slider-runnable-track {
+      width: 100%; height: 6px; cursor: pointer;
+      background: #1a1a1a; border-radius: 3px; border: 1px solid #333;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none; height: 22px; width: 22px;
+      border-radius: 50%; background: #00ff41; cursor: pointer;
+      margin-top: -9px;
+      box-shadow: 0 0 10px rgba(0, 255, 65, 0.5), 0 0 20px rgba(0, 255, 65, 0.3);
+      border: 2px solid #000; transition: transform 0.1s;
+    }
+    input[type=range]::-webkit-slider-thumb:hover { transform: scale(1.2); }
+
+    input[type=range]::-moz-range-track {
+      width: 100%; height: 6px; cursor: pointer;
+      background: #1a1a1a; border-radius: 3px; border: 1px solid #333;
+    }
+    input[type=range]::-moz-range-thumb {
+      height: 22px; width: 22px; border-radius: 50%;
+      background: #00ff41; cursor: pointer;
+      border: 2px solid #000;
+      box-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+    }
+
+    .speed-labels {
+      display: flex; justify-content: space-between;
+      font-size: 0.75rem; color: #555;
+      font-family: 'Courier New', monospace; margin-top: 5px;
+    }
+
+    .btn-group { display: flex; gap: 12px; }
+
+    .btn {
+      flex: 1;
+      background: transparent;
+      border: 2px solid #00ff41;
+      color: #00ff41;
+      padding: 14px 20px;
+      font-size: 0.95rem;
+      font-family: 'Courier New', monospace;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: all 0.25s ease;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-weight: bold;
+      position: relative;
+      overflow: hidden;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn::before {
+      content: ''; position: absolute;
+      top: 0; left: -100%; width: 100%; height: 100%;
+      background: rgba(0, 255, 65, 0.1);
+      transition: left 0.3s;
+    }
+    .btn:hover::before { left: 0; }
+    .btn:hover {
+      background: rgba(0, 255, 65, 0.1);
+      box-shadow: 0 0 20px rgba(0, 255, 65, 0.2);
+      transform: translateY(-2px);
+    }
+    .btn:active { transform: translateY(0); }
+
+    .btn-play { border-color: #00ff41; color: #00ff41; }
+    .btn-download { border-color: #00cc33; color: #00cc33; flex: 1.5; }
+    .btn-download:hover {
+      background: rgba(0, 204, 51, 0.1);
+      box-shadow: 0 0 20px rgba(0, 204, 51, 0.2);
+    }
+
+    .progress-section {
+      margin-top: 20px;
+      display: none;
+    }
+
+    .time-display {
+      display: flex; justify-content: space-between;
+      font-family: 'Courier New', monospace;
+      font-size: 0.85rem; color: #888;
+      margin-bottom: 8px;
+    }
+
+    .progress-container {
+      width: 100%; height: 6px;
+      background: #1a1a1a; border-radius: 3px;
+      overflow: hidden; cursor: pointer;
+      border: 1px solid #333;
+    }
+
+    .progress-bar {
+      height: 100%; background: #00ff41;
+      width: 0%;
+      transition: width 0.1s linear;
+      box-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+    }
+
+    #visualizer {
+      width: 100%; height: 100px;
+      background: #050505; border: 1px solid #1a1a1a;
+      border-radius: 6px; margin-top: 20px;
+      display: none;
+    }
+
+    .status {
+      margin-top: 15px; padding: 12px;
+      text-align: center;
+      font-family: 'Courier New', monospace;
+      font-size: 0.85rem; color: #00ff41;
+      min-height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+      background: rgba(0, 255, 65, 0.03);
+      border: 1px solid transparent;
+      transition: all 0.3s;
+    }
+
+    .status.active {
+      background: rgba(0, 255, 65, 0.05);
+      border-color: rgba(0, 255, 65, 0.2);
+    }
+
+    .status.error {
+      color: #ff4444;
+      background: rgba(255, 68, 68, 0.05);
+      border-color: rgba(255, 68, 68, 0.2);
+    }
+
+    /* ===== MODALS ===== */
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.85);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      backdrop-filter: blur(5px);
+    }
+
+    .modal-overlay.active { display: flex; }
+
+    .modal {
+      background: #0a0a0a;
+      border: 2px solid #00ff41;
+      border-radius: 12px;
+      padding: 30px;
+      max-width: 450px;
+      width: 90%;
+      box-shadow: 0 0 30px rgba(0, 255, 65, 0.2);
+      animation: modalIn 0.3s ease;
+    }
+
+    @keyframes modalIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .modal h2 {
+      color: #00ff41;
+      font-family: 'Courier New', monospace;
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 15px; right: 20px;
+      background: none; border: none;
+      color: #888; font-size: 1.5rem;
+      cursor: pointer;
+    }
+    .modal-close:hover { color: #ff4444; }
+
+    .modal-input {
+      width: 100%;
+      background: #1a1a1a;
+      border: 1px solid #333;
+      border-radius: 6px;
+      padding: 12px 15px;
+      color: #e0e0e0;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .modal-input:focus { border-color: #00ff41; }
+
+    .modal-select {
+      width: 100%;
+      background: #1a1a1a;
+      border: 1px solid #333;
+      border-radius: 6px;
+      padding: 12px 15px;
+      color: #e0e0e0;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+      outline: none;
+      cursor: pointer;
+    }
+    .modal-select:focus { border-color: #00ff41; }
+
+    .modal-btn {
+      width: 100%;
+      background: transparent;
+      border: 2px solid #00ff41;
+      color: #00ff41;
+      padding: 12px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9rem;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: all 0.2s;
+      text-transform: uppercase;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+    .modal-btn:hover {
+      background: rgba(0, 255, 65, 0.1);
+      box-shadow: 0 0 15px rgba(0, 255, 65, 0.2);
+    }
+
+    .premium-card {
+      background: rgba(255, 215, 0, 0.05);
+      border: 1px solid rgba(255, 215, 0, 0.3);
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    .premium-card h3 {
+      color: #FFD700;
+      font-family: 'Courier New', monospace;
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+
+    .premium-price {
+      color: #FFD700;
+      font-size: 1.5rem;
+      font-weight: bold;
+      font-family: 'Courier New', monospace;
+    }
+
+    .premium-price span {
+      font-size: 0.8rem;
+      color: #888;
+    }
+
+    .premium-btn {
+      width: 100%;
+      background: linear-gradient(135deg, #FFD700, #FFA500);
+      border: none;
+      color: #000;
+      padding: 12px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9rem;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: all 0.2s;
+      text-transform: uppercase;
+      font-weight: bold;
+      letter-spacing: 1px;
+      margin-top: 10px;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .premium-btn:hover {
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .admin-panel {
+      background: rgba(255, 107, 0, 0.05);
+      border: 1px solid rgba(255, 107, 0, 0.3);
+      border-radius: 8px;
+      padding: 20px;
+      margin-top: 20px;
+      display: none;
+    }
+
+    .admin-panel h3 {
+      color: #ff6b00;
+      font-family: 'Courier New', monospace;
+      font-size: 1rem;
+      margin-bottom: 15px;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .premium-list {
+      max-height: 200px;
+      overflow-y: auto;
+      margin-top: 15px;
+    }
+
+    .premium-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 12px;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 4px;
+      margin-bottom: 8px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.8rem;
+    }
+
+    .premium-item .email { color: #ccc; }
+    .premium-item .expires {
+      color: #ff6b00;
+      font-size: 0.75rem;
+    }
+
+    .premium-item .remove-btn {
+      background: transparent;
+      border: 1px solid #ff4444;
+      color: #ff4444;
+      padding: 2px 8px;
+      font-size: 0.7rem;
+      cursor: pointer;
+      border-radius: 4px;
+      font-family: 'Courier New', monospace;
+    }
+    .premium-item .remove-btn:hover {
+      background: #ff4444;
+      color: #000;
+    }
+
+    .bypass-note {
+      background: rgba(255, 107, 0, 0.08);
+      border: 1px solid rgba(255, 107, 0, 0.3);
+      border-radius: 8px;
+      padding: 15px;
+      margin-top: 15px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.8rem;
+      color: #ffaa44;
+      line-height: 1.6;
+    }
+
+    footer {
+      margin-top: 40px;
+      text-align: center;
+      padding: 20px;
+      color: #444;
+      font-family: 'Courier New', monospace;
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+    }
+
+    footer span { color: #00ff41; opacity: 0.6; }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.6rem; letter-spacing: 2px; }
+      .btn-group { flex-direction: column; }
+      .upload-area { padding: 30px 20px; }
+      .topbar { flex-direction: column; align-items: stretch; }
+      .topbar-left, .topbar-right { justify-content: center; }
+    }
+  </style>
+<base target="_blank">
+</head>
+<body>
+  <div class="container">
+    <!-- TOPBAR -->
+    <div class="topbar" id="topbar">
+      <div class="topbar-left">
+        <a class="btn-top btn-roblox-top" href="https://create.roblox.com/dashboard/creations" target="_blank" rel="noopener noreferrer">
+          🚀 UPLOAD TO ROBLOX
+        </a>
+        <a class="btn-top btn-wa-top" href="https://whatsapp.com/channel/0029Vb7bDpv9sBIFbLE5LA0o" target="_blank" rel="noopener noreferrer">
+          📱 JOIN SALURAN WA
+        </a>
+      </div>
+      <div class="topbar-right" id="topbarRight">
+        <button class="btn-top btn-premium-top" id="btnPremium" onclick="openPremiumModal()">
+          ⭐ UPGRADE PREMIUM
+        </button>
+        <button class="btn-top btn-login-top" id="btnLogin" onclick="showLoginPanel()">
+          🔐 LOGIN
+        </button>
+      </div>
+    </div>
+
+    <header>
+      <h1>Madcxvii STUDIO</h1>
+      <p>SPEED MUSIC PROCESSOR FOR ROBLOX</p>
+    </header>
+
+    <!-- LOGIN PANEL -->
+    <div class="login-panel" id="loginPanel">
+      <h2>🔐 Login dengan Gmail</h2>
+      <input type="email" class="login-input" id="loginEmail" placeholder="Masukkan Gmail kamu...">
+      <br>
+      <button class="login-btn" onclick="doLogin()">MASUK</button>
+      <p class="login-note">⚠️ Harus Gmail asli (@gmail.com). Sistem akan cek format email.</p>
+    </div>
+
+    <div class="upload-area" id="uploadArea">
+      <div class="upload-icon">▶</div>
+      <p>Drag & Drop file audio di sini</p>
+      <p>atau <span class="highlight">Klik untuk Browse</span></p>
+      <small>Format: MP3, WAV, OGG, M4A</small>
+      <input type="file" id="fileInput" accept="audio/*" hidden>
+    </div>
+
+    <div class="info-panel" id="infoPanel">
+      <div class="info-row">
+        <span class="label">📁 FILE</span>
+        <span class="value" id="fileName">-</span>
+      </div>
+      <div class="info-row">
+        <span class="label">⏱ DURASI ORIGINAL</span>
+        <span class="value" id="origDuration">-</span>
+      </div>
+      <div class="info-row">
+        <span class="label">⏱ DURASI BYPASS</span>
+        <span class="value" id="speedDuration">-</span>
+      </div>
+      <div class="info-row">
+        <span class="label">⚡ BYPASS SPEED</span>
+        <span class="value" id="webSpeedDisplay">2.00x</span>
+      </div>
+      <div class="info-row">
+        <span class="label">🔒 BYPASS STATUS</span>
+        <span class="value" id="bypassStatus" style="color: #555;">OFF</span>
+      </div>
+      <div class="info-row highlight-row">
+        <span class="label">🎮 ROBLOX PLAYBACK SPEED</span>
+        <div style="display:flex;align-items:center;">
+          <span class="value" id="ingameSpeedDisplay">0.50</span>
+          <button class="copy-btn" id="copyBtn">COPY</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="controls" id="controls">
+      <div class="slider-container">
+        <label>
+          <span>BYPASS SPEED (FIXED)</span>
+          <span id="speedValue">2.00x</span>
+        </label>
+        <input type="range" id="speedSlider" min="0.1" max="3.0" step="0.01" value="2.0" disabled style="opacity: 0.5;">
+        <div class="speed-labels">
+          <span>0.1x</span>
+          <span>SLOWED</span>
+          <span>NORMAL</span>
+          <span>FAST</span>
+          <span>3.0x</span>
+        </div>
+        <p style="color: #ff6b00; font-size: 0.75rem; margin-top: 5px; font-family: 'Courier New';">
+          ⚠️ Bypass rate auto 2.00x — preview & download 100% sama (chipmunk)
+        </p>
+      </div>
+
+      <div class="btn-group">
+        <button class="btn btn-play" id="playBtn">▶ PLAY</button>
+        <button class="btn btn-download" id="downloadBtn">⬇ DOWNLOAD BYPASS (MP3)</button>
+      </div>
+
+      <div class="progress-section" id="progressSection">
+        <div class="time-display">
+          <span id="currentTime">0:00</span>
+          <span id="totalTime">0:00</span>
+        </div>
+        <div class="progress-container" id="progressContainer">
+          <div class="progress-bar" id="progressBar"></div>
+        </div>
+      </div>
+
+      <div class="bypass-note" id="bypassNote" style="display: none;">
+        ⚠️ <b>PREVIEW = DOWNLOAD = CHIPMUNK</b> (pitch naik 2x + EQ + noise)<br>
+        File ini sengaja dibikin beda supaya lolos copyright Roblox.<br>
+        Pas di-upload ke Roblox, set <b>PlaybackSpeed = 0.50</b> untuk balikin ke normal.
+      </div>
+    </div>
+
+    <!-- ADMIN PANEL (Owner Only) -->
+    <div class="admin-panel" id="adminPanel">
+      <h3>👑 Owner Panel - Add Premium User</h3>
+      <input type="email" class="modal-input" id="adminEmailInput" placeholder="Masukkan Gmail user...">
+      <select class="modal-select" id="adminDurationSelect">
+        <option value="1">1 Hari</option>
+        <option value="3">3 Hari</option>
+        <option value="7" selected>1 Minggu</option>
+        <option value="14">2 Minggu</option>
+        <option value="30">1 Bulan</option>
+        <option value="90">3 Bulan</option>
+        <option value="365">1 Tahun</option>
+      </select>
+      <button class="modal-btn" onclick="addPremiumUser()">✅ ADD PREMIUM</button>
+      <div class="premium-list" id="premiumList"></div>
+    </div>
+
+    <canvas id="visualizer"></canvas>
+
+    <div class="status" id="status"></div>
+  </div>
+
+  <footer>
+    <p><span>by Madcxvii</span> | Madcxvii</p>
+  </footer>
+
+  <audio id="audioPlayer" crossorigin="anonymous"></audio>
+
+  <!-- PREMIUM MODAL -->
+  <div class="modal-overlay" id="premiumModal">
+    <div class="modal">
+      <h2>⭐ Upgrade Premium</h2>
+      <div class="premium-card">
+        <h3>🥇 SEMINGGU</h3>
+        <div class="premium-price">Rp 50.000 <span>/ minggu</span></div>
+        <a class="premium-btn" href="https://wa.me/6285143886084?text=Halo%20Madcxvii%2C%20saya%20mau%20upgrade%20premium%20Madcxvii%20STUDIO%20SEMINGGU%20Rp50.000" target="_blank" rel="noopener noreferrer">
+          💬 CHAT WA UPGRADE
+        </a>
+      </div>
+      <div class="premium-card">
+        <h3>🥈 SEBULAN</h3>
+        <div class="premium-price">Rp 80.000 <span>/ bulan</span></div>
+        <a class="premium-btn" href="https://wa.me/6285143886084?text=Halo%20Madcxvii%2C%20saya%20mau%20upgrade%20premium%20Madcxvii%20STUDIO%20SEBULAN%20Rp80.000" target="_blank" rel="noopener noreferrer">
+          💬 CHAT WA UPGRADE
+        </a>
+      </div>
+      <button class="modal-btn" onclick="closePremiumModal()" style="margin-top: 10px; border-color: #ff4444; color: #ff4444;">❌ TUTUP</button>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/lamejs@1.2.1/lame.min.js"></script>
+
+  <script>
+    // ===== CONFIG =====
+    const OWNER_EMAIL = 'ilailachan2007@gmail.com';
+    const DAILY_LIMIT = 9999999999999;
+    const WA_NUMBER = '6285143886084';
+
+    // ===== AUTO BYPASS CONFIG =====
+    const BYPASS_RATE = 2.00;
+    const BYPASS_CUT_SECONDS = 0.08;
+    const BYPASS_NOISE_LEVEL = 0.005;
+
+    // ===== AUTH STATE =====
+    let currentUser = null;
+    let userUploads = {};
+    let premiumUsers = JSON.parse(localStorage.getItem('mells_premium_users') || '[]');
+
+    // ===== AUDIO CONTEXT & STATE =====
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    const audioCtx = new AudioContext();
+    const audioElement = document.getElementById('audioPlayer');
+
+    let currentBuffer = null;
+    let currentFile = null;
+    let bypassedBuffer = null;
+    let previewURL = null;
+    let objectURL = null;
+    let mediaSourceConnected = false;
+    let analyser = null;
+    let animationId = null;
+    let originalDuration = 0;
+
+    // ===== DOM ELEMENTS =====
+    const uploadArea = document.getElementById('uploadArea');
+    const fileInput = document.getElementById('fileInput');
+    const infoPanel = document.getElementById('infoPanel');
+    const controls = document.getElementById('controls');
+    const adminPanel = document.getElementById('adminPanel');
+    const loginPanel = document.getElementById('loginPanel');
+    const topbarRight = document.getElementById('topbarRight');
+    const speedSlider = document.getElementById('speedSlider');
+    const speedValue = document.getElementById('speedValue');
+    const webSpeedDisplay = document.getElementById('webSpeedDisplay');
+    const ingameSpeedDisplay = document.getElementById('ingameSpeedDisplay');
+    const speedDurationEl = document.getElementById('speedDuration');
+    const playBtn = document.getElementById('playBtn');
+    const downloadBtn = document.getElementById('downloadBtn');
+    const copyBtn = document.getElementById('copyBtn');
+    const statusEl = document.getElementById('status');
+    const canvas = document.getElementById('visualizer');
+    const canvasCtx = canvas.getContext('2d');
+    const progressSection = document.getElementById('progressSection');
+    const progressBar = document.getElementById('progressBar');
+    const progressContainer = document.getElementById('progressContainer');
+    const currentTimeEl = document.getElementById('currentTime');
+    const totalTimeEl = document.getElementById('totalTime');
+    const bypassNote = document.getElementById('bypassNote');
+
+    // ===== UTILITIES =====
+    function formatTime(seconds) {
+      if (!isFinite(seconds)) return '0:00';
+      const m = Math.floor(seconds / 60);
+      const s = Math.floor(seconds % 60);
+      return m + ':' + (s < 10 ? '0' : '') + s;
+    }
+
+    function showStatus(msg, isError = false) {
+      statusEl.textContent = msg;
+      statusEl.classList.add('active');
+      statusEl.classList.toggle('error', isError);
+      if (!isError) {
+        setTimeout(() => {
+          statusEl.classList.remove('active');
+        }, 3000);
+      }
+    }
+
+    function getTodayKey() {
+      const now = new Date();
+      return now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate();
+    }
+
+    function getUploadCount(email) {
+      const key = 'mells_uploads_' + email;
+      const data = JSON.parse(localStorage.getItem(key) || '{}');
+      const today = getTodayKey();
+      return data[today] || 0;
+    }
+
+    function incrementUploadCount(email) {
+      const key = 'mells_uploads_' + email;
+      const data = JSON.parse(localStorage.getItem(key) || '{}');
+      const today = getTodayKey();
+      data[today] = (data[today] || 0) + 1;
+      localStorage.setItem(key, JSON.stringify(data));
+    }
+
+    function isPremium(email) {
+      const now = Date.now();
+      const user = premiumUsers.find(u => u.email === email);
+      if (!user) return false;
+      return user.expires > now;
+    }
+
+    function isOwner(email) {
+      return email === OWNER_EMAIL;
+    }
+
+    function canUpload(email) {
+      if (isOwner(email)) return true;
+      if (isPremium(email)) return true;
+      return getUploadCount(email) < DAILY_LIMIT;
+    }
+
+    function getRemainingUploads(email) {
+      if (isOwner(email)) return '∞';
+      if (isPremium(email)) return '∞';
+      return Math.max(0, DAILY_LIMIT - getUploadCount(email));
+    }
+
+    // ===== AUDIO CONTEXT HELPER =====
+    async function ensureAudioContext() {
+      if (audioCtx.state === 'suspended') {
+        await audioCtx.resume();
+      }
+    }
+
+    // ===== LOGIN SYSTEM =====
+    function showLoginPanel() {
+      loginPanel.style.display = 'block';
+      document.getElementById('loginEmail').focus();
+    }
+
+    function hideLoginPanel() {
+      loginPanel.style.display = 'none';
+    }
+
+    function doLogin() {
+      const email = document.getElementById('loginEmail').value.trim().toLowerCase();
+
+      if (!email) {
+        showStatus('❌ Masukkan Gmail dulu!', true);
+        return;
+      }
+
+      if (!email.endsWith('@gmail.com')) {
+        showStatus('❌ Harus Gmail asli (@gmail.com)!', true);
+        return;
+      }
+
+      const emailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+      if (!emailRegex.test(email)) {
+        showStatus('❌ Format Gmail tidak valid!', true);
+        return;
+      }
+
+      currentUser = { email: email };
+      localStorage.setItem('mells_current_user', email);
+
+      hideLoginPanel();
+      updateUIAfterLogin();
+      showStatus('✅ Login berhasil! Selamat datang, ' + email);
+    }
+
+    function logout() {
+      currentUser = null;
+      localStorage.removeItem('mells_current_user');
+
+      topbarRight.innerHTML = `
+        <button class="btn-top btn-premium-top" id="btnPremium" onclick="openPremiumModal()">
+          ⭐ UPGRADE PREMIUM
+        </button>
+        <button class="btn-top btn-login-top" id="btnLogin" onclick="showLoginPanel()">
+          🔐 LOGIN
+        </button>
+      `;
+
+      adminPanel.style.display = 'none';
+      loginPanel.style.display = 'block';
+      uploadArea.style.opacity = '0.5';
+      uploadArea.style.pointerEvents = 'none';
+
+      showStatus('👋 Berhasil logout');
+    }
+
+    function updateUIAfterLogin() {
+      if (!currentUser) return;
+
+      const isUserOwner = isOwner(currentUser.email);
+      const isUserPremium = isPremium(currentUser.email);
+      const remaining = getRemainingUploads(currentUser.email);
+
+      let badgeClass = 'badge-free';
+      let badgeText = 'FREE';
+      if (isUserOwner) { badgeClass = 'badge-owner'; badgeText = 'OWNER'; }
+      else if (isUserPremium) { badgeClass = 'badge-premium'; badgeText = 'PREMIUM'; }
+
+      let premiumBtnHTML = `<button class="btn-top btn-premium-top" onclick="openPremiumModal()">⭐ UPGRADE PREMIUM</button>`;
+      let limitHTML = '';
+      if (!isUserOwner && !isUserPremium) {
+        limitHTML = `<span class="limit-info">${remaining}/5 hari ini</span>`;
+      }
+
+      topbarRight.innerHTML = `
+        <div class="user-info">
+          <div class="user-avatar">👤</div>
+          <span class="user-email">${currentUser.email}</span>
+          <span class="user-badge ${badgeClass}">${badgeText}</span>
+          ${limitHTML}
+        </div>
+        ${premiumBtnHTML}
+        <button class="btn-top btn-login-top" onclick="logout()">LOGOUT</button>
+      `;
+
+      if (isUserOwner) {
+        adminPanel.style.display = 'block';
+        renderPremiumList();
+      }
+
+      uploadArea.style.opacity = '1';
+      uploadArea.style.pointerEvents = 'auto';
+    }
+
+    function checkSavedLogin() {
+      const savedEmail = localStorage.getItem('mells_current_user');
+      if (savedEmail) {
+        currentUser = { email: savedEmail };
+        hideLoginPanel();
+        updateUIAfterLogin();
+      } else {
+        uploadArea.style.opacity = '0.5';
+        uploadArea.style.pointerEvents = 'none';
+      }
+    }
+
+    // ===== PREMIUM MODAL =====
+    function openPremiumModal() {
+      document.getElementById('premiumModal').classList.add('active');
+    }
+
+    function closePremiumModal() {
+      document.getElementById('premiumModal').classList.remove('active');
+    }
+
+    // ===== ADMIN PANEL =====
+    function addPremiumUser() {
+      const email = document.getElementById('adminEmailInput').value.trim().toLowerCase();
+      const days = parseInt(document.getElementById('adminDurationSelect').value);
+
+      if (!email || !email.includes('@gmail.com')) {
+        showStatus('❌ Masukkan Gmail yang valid!', true);
+        return;
+      }
+
+      const expires = Date.now() + (days * 24 * 60 * 60 * 1000);
+      premiumUsers = premiumUsers.filter(u => u.email !== email);
+      premiumUsers.push({ email, expires, addedAt: Date.now() });
+      localStorage.setItem('mells_premium_users', JSON.stringify(premiumUsers));
+
+      document.getElementById('adminEmailInput').value = '';
+      renderPremiumList();
+      showStatus('✅ Premium ditambahkan untuk ' + email + ' selama ' + days + ' hari');
+    }
+
+    function removePremiumUser(email) {
+      premiumUsers = premiumUsers.filter(u => u.email !== email);
+      localStorage.setItem('mells_premium_users', JSON.stringify(premiumUsers));
+      renderPremiumList();
+      showStatus('✅ Premium dihapus untuk ' + email);
+    }
+
+    function renderPremiumList() {
+      const listEl = document.getElementById('premiumList');
+      const now = Date.now();
+      const activeUsers = premiumUsers.filter(u => u.expires > now);
+
+      if (activeUsers.length === 0) {
+        listEl.innerHTML = '<div style="color:#555;text-align:center;padding:10px;font-family:Courier New;">Belum ada user premium</div>';
+        return;
+      }
+
+      listEl.innerHTML = activeUsers.map(u => {
+        const daysLeft = Math.ceil((u.expires - now) / (24 * 60 * 60 * 1000));
+        const dateStr = new Date(u.expires).toLocaleDateString('id-ID');
+        return `
+          <div class="premium-item">
+            <span class="email">${u.email}</span>
+            <span class="expires">${daysLeft} hari lagi (sampai ${dateStr})</span>
+            <button class="remove-btn" onclick="removePremiumUser('${u.email}')">HAPUS</button>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // ===== VISUALIZER =====
+    function setupVisualizer() {
+      if (mediaSourceConnected) return;
+      try {
+        const source = audioCtx.createMediaElementSource(audioElement);
+        analyser = audioCtx.createAnalyser();
+        analyser.fftSize = 256;
+        source.connect(analyser);
+        analyser.connect(audioCtx.destination);
+        mediaSourceConnected = true;
+      } catch (e) {
+        console.log('Visualizer setup skipped:', e.message);
+      }
+    }
+
+    function drawVisualizer() {
+      if (!analyser) {
+        animationId = requestAnimationFrame(drawVisualizer);
+        return;
+      }
+
+      const bufferLength = analyser.frequencyBinCount;
+      const dataArray = new Uint8Array(bufferLength);
+      analyser.getByteFrequencyData(dataArray);
+
+      canvasCtx.fillStyle = '#050505';
+      canvasCtx.fillRect(0, 0, canvas.width, canvas.height);
+
+      const barCount = bufferLength;
+      const barWidth = (canvas.width / barCount);
+      let x = 0;
+
+      for (let i = 0; i < barCount; i++) {
+        const percent = dataArray[i] / 255;
+        const barHeight = percent * canvas.height;
+        const hue = 120 + (percent * 40);
+        const lightness = 20 + (percent * 50);
+        canvasCtx.fillStyle = `hsl(${hue}, 100%, ${lightness}%)`;
+        canvasCtx.fillRect(x, canvas.height - barHeight, barWidth - 1, barHeight);
+        x += barWidth;
+      }
+
+      animationId = requestAnimationFrame(drawVisualizer);
+    }
+
+    function resizeCanvas() {
+      const rect = canvas.getBoundingClientRect();
+      canvas.width = rect.width;
+      canvas.height = rect.height;
+    }
+
+    // ===== WAV ENCODER (for preview) =====
+    function audioBufferToWav(buffer) {
+      const numChannels = buffer.numberOfChannels;
+      const sampleRate = buffer.sampleRate;
+      const bitDepth = 16;
+      const bytesPerSample = bitDepth / 8;
+      const blockAlign = numChannels * bytesPerSample;
+      
+      const dataLength = buffer.length * numChannels * bytesPerSample;
+      const headerLength = 44;
+      const totalLength = headerLength + dataLength;
+      
+      const arrayBuffer = new ArrayBuffer(totalLength);
+      const view = new DataView(arrayBuffer);
+      
+      function writeString(offset, string) {
+        for (let i = 0; i < string.length; i++) {
+          view.setUint8(offset + i, string.charCodeAt(i));
+        }
+      }
+      
+      writeString(0, 'RIFF');
+      view.setUint32(4, totalLength - 8, true);
+      writeString(8, 'WAVE');
+      writeString(12, 'fmt ');
+      view.setUint32(16, 16, true);
+      view.setUint16(20, 1, true);
+      view.setUint16(22, numChannels, true);
+      view.setUint32(24, sampleRate, true);
+      view.setUint32(28, sampleRate * blockAlign, true);
+      view.setUint16(32, blockAlign, true);
+      view.setUint16(34, bitDepth, true);
+      writeString(36, 'data');
+      view.setUint32(40, dataLength, true);
+      
+      let offset = 44;
+      for (let i = 0; i < buffer.length; i++) {
+        for (let c = 0; c < numChannels; c++) {
+          const sample = Math.max(-1, Math.min(1, buffer.getChannelData(c)[i]));
+          const intSample = sample < 0 ? sample * 0x8000 : sample * 0x7FFF;
+          view.setInt16(offset, intSample, true);
+          offset += 2;
+        }
+      }
+      
+      return new Blob([arrayBuffer], { type: 'audio/wav' });
+    }
+
+    // ===== BYPASS PROCESSING =====
+    async function applyEQ(buffer) {
+      const ctx = new OfflineAudioContext(buffer.numberOfChannels, buffer.length, buffer.sampleRate);
+      const source = ctx.createBufferSource();
+      source.buffer = buffer;
+      
+      const hp = ctx.createBiquadFilter();
+      hp.type = 'highpass';
+      hp.frequency.value = 150;
+      hp.Q.value = 0.7;
+      
+      const peak = ctx.createBiquadFilter();
+      peak.type = 'peaking';
+      peak.frequency.value = 5000;
+      peak.gain.value = 6;
+      peak.Q.value = 1;
+      
+      const hs = ctx.createBiquadFilter();
+      hs.type = 'highshelf';
+      hs.frequency.value = 10000;
+      hs.gain.value = 6;
+      
+      const ls = ctx.createBiquadFilter();
+      ls.type = 'lowshelf';
+      ls.frequency.value = 300;
+      ls.gain.value = -3;
+      
+      source.connect(hp);
+      hp.connect(peak);
+      peak.connect(hs);
+      hs.connect(ls);
+      ls.connect(ctx.destination);
+      
+      source.start();
+      return await ctx.startRendering();
+    }
+
+    function resampleChipmunk(buffer, rate, cutSeconds) {
+      const channels = buffer.numberOfChannels;
+      const sampleRate = buffer.sampleRate;
+      const cutSamples = Math.floor(cutSeconds * sampleRate);
+      const inputLength = buffer.length - cutSamples;
+      const outputLength = Math.max(1, Math.ceil(inputLength / rate));
+      
+      const newBuffer = new AudioBuffer({
+        length: outputLength,
+        numberOfChannels: channels,
+        sampleRate: sampleRate
+      });
+      
+      for (let c = 0; c < channels; c++) {
+        const inputData = buffer.getChannelData(c);
+        const outputData = newBuffer.getChannelData(c);
+        for (let i = 0; i < outputLength; i++) {
+          const srcIdx = cutSamples + Math.floor(i * rate);
+          if (srcIdx < buffer.length) {
+            outputData[i] = inputData[srcIdx];
+          } else {
+            outputData[i] = 0;
+          }
+        }
+      }
+      
+      return newBuffer;
+    }
+
+    function addNoise(buffer, level) {
+      for (let c = 0; c < buffer.numberOfChannels; c++) {
+        const data = buffer.getChannelData(c);
+        for (let i = 0; i < data.length; i++) {
+          const noise = (Math.random() * 2 - 1) * level;
+          data[i] = Math.max(-1, Math.min(1, data[i] + noise));
+        }
+      }
+      return buffer;
+    }
+
+    async function processBypass(buffer) {
+      showStatus('🔧 Step 1/3: Applying EQ...');
+      const eqBuffer = await applyEQ(buffer);
+      
+      showStatus('🔧 Step 2/3: Resampling chipmunk ' + BYPASS_RATE.toFixed(2) + 'x...');
+      let chipmunkBuffer = resampleChipmunk(eqBuffer, BYPASS_RATE, BYPASS_CUT_SECONDS);
+      
+      showStatus('🔧 Step 3/3: Adding noise layer...');
+      chipmunkBuffer = addNoise(chipmunkBuffer, BYPASS_NOISE_LEVEL);
+      
+      return chipmunkBuffer;
+    }
+
+    // ===== FILE UPLOAD =====
+    function handleFile(file) {
+      if (!currentUser) {
+        showStatus('❌ Login dulu pake Gmail! Klik "LOGIN" di atas.', true);
+        showLoginPanel();
+        return;
+      }
+
+      if (!canUpload(currentUser.email)) {
+        showStatus('❌ Limit harian tercapai (5/hari). Upgrade premium atau tunggu reset besok!', true);
+        return;
+      }
+
+      if (!file || !file.type.startsWith('audio/')) {
+        showStatus('❌ File bukan audio! Pilih file MP3/WAV/OGG.', true);
+        return;
+      }
+
+      currentFile = file;
+
+      if (objectURL) {
+        URL.revokeObjectURL(objectURL);
+      }
+      if (previewURL) {
+        URL.revokeObjectURL(previewURL);
+      }
+
+      document.getElementById('fileName').textContent = file.name;
+      showStatus('⏳ Memuat audio & menyiapkan bypass...');
+
+      const reader = new FileReader();
+      reader.onload = async (e) => {
+        try {
+          await ensureAudioContext();
+          currentBuffer = await audioCtx.decodeAudioData(e.target.result);
+
+          originalDuration = currentBuffer.duration;
+          document.getElementById('origDuration').textContent = formatTime(originalDuration);
+          totalTimeEl.textContent = formatTime(originalDuration / BYPASS_RATE);
+
+          // PROCESS BYPASS
+          bypassedBuffer = await processBypass(currentBuffer);
+          
+          // CREATE PREVIEW WAV FROM BYPASSED BUFFER
+          const wavBlob = audioBufferToWav(bypassedBuffer);
+          previewURL = URL.createObjectURL(wavBlob);
+          audioElement.src = previewURL;
+          
+          // AudioElement playbackRate = 1.0 because file is already chipmunk
+          audioElement.playbackRate = 1.0;
+          speedSlider.value = BYPASS_RATE;
+          speedValue.textContent = BYPASS_RATE.toFixed(2) + 'x';
+          webSpeedDisplay.textContent = BYPASS_RATE.toFixed(2) + 'x';
+          ingameSpeedDisplay.textContent = (1 / BYPASS_RATE).toFixed(2);
+          speedDurationEl.textContent = formatTime(bypassedBuffer.duration);
+
+          document.getElementById('bypassStatus').textContent = 'ACTIVE (CHIPMUNK)';
+          document.getElementById('bypassStatus').style.color = '#00ff41';
+          bypassNote.style.display = 'block';
+
+          infoPanel.style.display = 'block';
+          controls.style.display = 'block';
+          canvas.style.display = 'block';
+          progressSection.style.display = 'block';
+          resizeCanvas();
+
+          if (!animationId) {
+            drawVisualizer();
+          }
+
+          setupVisualizer();
+
+          // INCREMENT UPLOAD COUNT DAN UPDATE UI
+          incrementUploadCount(currentUser.email);
+          const remaining = getRemainingUploads(currentUser.email);
+          updateUIAfterLogin();
+
+          showStatus('✅ Bypass aktif! Preview = Download = CHIPMUNK. Sisa upload: ' + remaining);
+        } catch (err) {
+          showStatus('❌ Gagal proses audio: ' + err.message, true);
+          console.error(err);
+        }
+      };
+      reader.readAsArrayBuffer(file);
+    }
+
+    uploadArea.addEventListener('click', () => {
+      if (!currentUser) {
+        showStatus('❌ Login dulu pake Gmail! Klik "LOGIN" di atas.', true);
+        showLoginPanel();
+        return;
+      }
+      fileInput.click();
+    });
+    fileInput.addEventListener('change', (e) => {
+      if (e.target.files.length > 0) handleFile(e.target.files[0]);
+    });
+
+    uploadArea.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      uploadArea.classList.add('dragover');
+    });
+    uploadArea.addEventListener('dragleave', () => {
+      uploadArea.classList.remove('dragover');
+    });
+    uploadArea.addEventListener('drop', (e) => {
+      e.preventDefault();
+      uploadArea.classList.remove('dragover');
+      if (e.dataTransfer.files.length > 0) {
+        handleFile(e.dataTransfer.files[0]);
+      }
+    });
+
+    // ===== PLAYBACK =====
+    playBtn.addEventListener('click', async () => {
+      if (!audioElement.src) return;
+      await ensureAudioContext();
+
+      if (audioElement.paused) {
+        audioElement.play();
+        playBtn.textContent = '⏸ PAUSE';
+      } else {
+        audioElement.pause();
+        playBtn.textContent = '▶ PLAY';
+      }
+    });
+
+    audioElement.addEventListener('ended', () => {
+      playBtn.textContent = '▶ PLAY';
+      progressBar.style.width = '0%';
+    });
+
+    audioElement.addEventListener('timeupdate', () => {
+      if (audioElement.duration) {
+        const percent = (audioElement.currentTime / audioElement.duration) * 100;
+        progressBar.style.width = percent + '%';
+        currentTimeEl.textContent = formatTime(audioElement.currentTime);
+      }
+    });
+
+    audioElement.addEventListener('loadedmetadata', () => {
+      totalTimeEl.textContent = formatTime(audioElement.duration);
+    });
+
+    progressContainer.addEventListener('click', (e) => {
+      if (!audioElement.duration) return;
+      const rect = progressContainer.getBoundingClientRect();
+      const percent = (e.clientX - rect.left) / rect.width;
+      audioElement.currentTime = percent * audioElement.duration;
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.code === 'Space' && document.activeElement !== speedSlider) {
+        e.preventDefault();
+        playBtn.click();
+      }
+    });
+
+    copyBtn.addEventListener('click', () => {
+      const val = ingameSpeedDisplay.textContent;
+      navigator.clipboard.writeText(val).then(() => {
+        showStatus('📋 Roblox Playback Speed disalin: ' + val);
+      }).catch(() => {
+        showStatus('❌ Gagal menyalin ke clipboard', true);
+      });
+    });
+
+    // ===== MP3 ENCODER =====
+    function encodeAudioBufferToMp3(audioBuffer) {
+      const channels = audioBuffer.numberOfChannels;
+      const sampleRate = audioBuffer.sampleRate;
+      const kbps = 192;
+
+      const mp3encoder = new lamejs.Mp3Encoder(channels, sampleRate, kbps);
+      const mp3Data = [];
+
+      const sampleBlockSize = 1152;
+      const leftData = audioBuffer.getChannelData(0);
+      const rightData = channels > 1 ? audioBuffer.getChannelData(1) : leftData;
+
+      const totalSamples = audioBuffer.length;
+
+      for (let i = 0; i < totalSamples; i += sampleBlockSize) {
+        const leftChunk = new Int16Array(sampleBlockSize);
+        const rightChunk = channels > 1 ? new Int16Array(sampleBlockSize) : null;
+
+        for (let j = 0; j < sampleBlockSize; j++) {
+          if (i + j < totalSamples) {
+            leftChunk[j] = Math.max(-32768, Math.min(32767, leftData[i + j] * 32767));
+            if (rightChunk) {
+              rightChunk[j] = Math.max(-32768, Math.min(32767, rightData[i + j] * 32767));
+            }
+          } else {
+            leftChunk[j] = 0;
+            if (rightChunk) rightChunk[j] = 0;
+          }
+        }
+
+        let mp3buf;
+        if (channels > 1) {
+          mp3buf = mp3encoder.encodeBuffer(leftChunk, rightChunk);
+        } else {
+          mp3buf = mp3encoder.encodeBuffer(leftChunk);
+        }
+
+        if (mp3buf.length > 0) {
+          mp3Data.push(mp3buf);
+        }
+      }
+
+      const mp3buf = mp3encoder.flush();
+      if (mp3buf.length > 0) {
+        mp3Data.push(mp3buf);
+      }
+
+      return new Blob(mp3Data, { type: 'audio/mp3' });
+    }
+
+    // ===== DOWNLOAD =====
+    downloadBtn.addEventListener('click', async () => {
+      if (!bypassedBuffer || !currentFile) {
+        showStatus('❌ Upload file audio dulu!', true);
+        return;
+      }
+
+      downloadBtn.disabled = true;
+      downloadBtn.textContent = '⏳ ENCODING MP3...';
+      showStatus('🔧 Encoding bypassed audio ke MP3...');
+
+      try {
+        const mp3Blob = encodeAudioBufferToMp3(bypassedBuffer);
+        const url = URL.createObjectURL(mp3Blob);
+
+        const a = document.createElement('a');
+        a.href = url;
+        const baseName = currentFile.name.replace(/\.[^/.]+$/, '');
+        a.download = baseName + `_BYPASS_CHIPMUNK_2x.mp3`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+
+        setTimeout(() => URL.revokeObjectURL(url), 5000);
+        showStatus('✅ Download berhasil! Set PlaybackSpeed = 0.50 di Roblox untuk normal.');
+      } catch (err) {
+        showStatus('❌ Error: ' + err.message, true);
+        console.error(err);
+      } finally {
+        downloadBtn.disabled = false;
+        downloadBtn.textContent = '⬇ DOWNLOAD BYPASS (MP3)';
+      }
+    });
+
+    // ===== INIT =====
+    window.addEventListener('resize', resizeCanvas);
+    checkSavedLogin();
+
+    document.getElementById('premiumModal').addEventListener('click', (e) => {
+      if (e.target.id === 'premiumModal') closePremiumModal();
+    });
+  </script>
+</body>
+</html>
