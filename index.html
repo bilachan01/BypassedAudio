@@ -453,6 +453,16 @@
       box-shadow: 0 0 20px rgba(0, 204, 51, 0.2);
     }
 
+    .btn-regenerate {
+      border-color: #FFD700;
+      color: #FFD700;
+      flex: 1;
+    }
+    .btn-regenerate:hover {
+      background: rgba(255, 215, 0, 0.1);
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+    }
+
     .progress-section {
       margin-top: 20px;
       display: none;
@@ -744,6 +754,10 @@
 
     footer span { color: #00ff41; opacity: 0.6; }
 
+    .slider-enabled {
+      opacity: 1 !important;
+    }
+
     @media (max-width: 600px) {
       header h1 { font-size: 1.6rem; letter-spacing: 2px; }
       .btn-group { flex-direction: column; }
@@ -831,24 +845,28 @@
     <div class="controls" id="controls">
       <div class="slider-container">
         <label>
-          <span>BYPASS SPEED (FIXED)</span>
+          <span>BYPASS SPEED (SLIDER AKTIF)</span>
           <span id="speedValue">2.00x</span>
         </label>
-        <input type="range" id="speedSlider" min="0.1" max="3.0" step="0.01" value="2.0" disabled style="opacity: 0.5;">
+        <input type="range" id="speedSlider" min="0.5" max="3.0" step="0.01" value="2.0" class="slider-enabled">
         <div class="speed-labels">
-          <span>0.1x</span>
+          <span>0.5x</span>
           <span>SLOWED</span>
           <span>NORMAL</span>
           <span>FAST</span>
           <span>3.0x</span>
         </div>
+        <p style="color: #00ff41; font-size: 0.75rem; margin-top: 5px; font-family: 'Courier New';">
+          ✅ Slider aktif! Geser untuk mengubah kecepatan bypass. Preview & download akan menyesuaikan.
+        </p>
         <p style="color: #ff6b00; font-size: 0.75rem; margin-top: 5px; font-family: 'Courier New';">
-          ⚠️ Bypass rate auto 2.00x — preview & download 100% sama (chipmunk)
+          ⚠️ Setelah ganti kecepatan, klik tombol "RE-GENERATE" untuk menerapkan perubahan.
         </p>
       </div>
 
       <div class="btn-group">
         <button class="btn btn-play" id="playBtn">▶ PLAY</button>
+        <button class="btn btn-regenerate" id="regenerateBtn">🔄 RE-GENERATE</button>
         <button class="btn btn-download" id="downloadBtn">⬇ DOWNLOAD BYPASS (MP3)</button>
       </div>
 
@@ -863,9 +881,9 @@
       </div>
 
       <div class="bypass-note" id="bypassNote" style="display: none;">
-        ⚠️ <b>PREVIEW = DOWNLOAD = CHIPMUNK</b> (pitch naik 2x + EQ + noise)<br>
+        ⚠️ <b>PREVIEW = DOWNLOAD = CHIPMUNK</b> (pitch naik sesuai speed + EQ + noise)<br>
         File ini sengaja dibikin beda supaya lolos copyright Roblox.<br>
-        Pas di-upload ke Roblox, set <b>PlaybackSpeed = 0.50</b> untuk balikin ke normal.
+        Pas di-upload ke Roblox, set <b>PlaybackSpeed = 1/speed</b> untuk balikin ke normal.
       </div>
     </div>
 
@@ -928,7 +946,7 @@
     const WA_NUMBER = '6285143886084';
 
     // ===== AUTO BYPASS CONFIG =====
-    const BYPASS_RATE = 2.00;
+    let BYPASS_RATE = 2.00;
     const BYPASS_CUT_SECONDS = 0.08;
     const BYPASS_NOISE_LEVEL = 0.005;
 
@@ -951,6 +969,7 @@
     let analyser = null;
     let animationId = null;
     let originalDuration = 0;
+    let isProcessing = false;
 
     // ===== DOM ELEMENTS =====
     const uploadArea = document.getElementById('uploadArea');
@@ -967,6 +986,7 @@
     const speedDurationEl = document.getElementById('speedDuration');
     const playBtn = document.getElementById('playBtn');
     const downloadBtn = document.getElementById('downloadBtn');
+    const regenerateBtn = document.getElementById('regenerateBtn');
     const copyBtn = document.getElementById('copyBtn');
     const statusEl = document.getElementById('status');
     const canvas = document.getElementById('visualizer');
@@ -1390,17 +1410,74 @@
       return buffer;
     }
 
-    async function processBypass(buffer) {
+    async function processBypass(buffer, rate) {
       showStatus('🔧 Step 1/3: Applying EQ...');
       const eqBuffer = await applyEQ(buffer);
       
-      showStatus('🔧 Step 2/3: Resampling chipmunk ' + BYPASS_RATE.toFixed(2) + 'x...');
-      let chipmunkBuffer = resampleChipmunk(eqBuffer, BYPASS_RATE, BYPASS_CUT_SECONDS);
+      showStatus('🔧 Step 2/3: Resampling chipmunk ' + rate.toFixed(2) + 'x...');
+      let chipmunkBuffer = resampleChipmunk(eqBuffer, rate, BYPASS_CUT_SECONDS);
       
       showStatus('🔧 Step 3/3: Adding noise layer...');
       chipmunkBuffer = addNoise(chipmunkBuffer, BYPASS_NOISE_LEVEL);
       
       return chipmunkBuffer;
+    }
+
+    async function regenerateBypass() {
+      if (!currentBuffer || isProcessing) return;
+
+      isProcessing = true;
+      regenerateBtn.disabled = true;
+      regenerateBtn.textContent = '⏳ PROCESSING...';
+
+      try {
+        // Get current speed from slider
+        BYPASS_RATE = parseFloat(speedSlider.value);
+        
+        showStatus('🔄 Regenerating bypass dengan speed ' + BYPASS_RATE.toFixed(2) + 'x...');
+        
+        // Process bypass dengan speed baru
+        bypassedBuffer = await processBypass(currentBuffer, BYPASS_RATE);
+        
+        // Update preview
+        if (previewURL) {
+          URL.revokeObjectURL(previewURL);
+        }
+        const wavBlob = audioBufferToWav(bypassedBuffer);
+        previewURL = URL.createObjectURL(wavBlob);
+        
+        // Update audio element
+        const wasPlaying = !audioElement.paused;
+        audioElement.src = previewURL;
+        audioElement.playbackRate = 1.0;
+        
+        if (wasPlaying) {
+          await audioElement.play();
+          playBtn.textContent = '⏸ PAUSE';
+        }
+        
+        // Update UI
+        speedValue.textContent = BYPASS_RATE.toFixed(2) + 'x';
+        webSpeedDisplay.textContent = BYPASS_RATE.toFixed(2) + 'x';
+        const ingameSpeed = (1 / BYPASS_RATE).toFixed(2);
+        ingameSpeedDisplay.textContent = ingameSpeed;
+        speedDurationEl.textContent = formatTime(bypassedBuffer.duration);
+        totalTimeEl.textContent = formatTime(bypassedBuffer.duration);
+        
+        document.getElementById('bypassStatus').textContent = 'ACTIVE (CHIPMUNK ' + BYPASS_RATE.toFixed(2) + 'x)';
+        document.getElementById('bypassStatus').style.color = '#00ff41';
+        bypassNote.style.display = 'block';
+        
+        showStatus('✅ Regenerate berhasil! Speed: ' + BYPASS_RATE.toFixed(2) + 'x, Roblox PlaybackSpeed: ' + ingameSpeed);
+        
+      } catch (err) {
+        showStatus('❌ Gagal regenerate: ' + err.message, true);
+        console.error(err);
+      } finally {
+        isProcessing = false;
+        regenerateBtn.disabled = false;
+        regenerateBtn.textContent = '🔄 RE-GENERATE';
+      }
     }
 
     // ===== FILE UPLOAD =====
@@ -1441,10 +1518,12 @@
 
           originalDuration = currentBuffer.duration;
           document.getElementById('origDuration').textContent = formatTime(originalDuration);
-          totalTimeEl.textContent = formatTime(originalDuration / BYPASS_RATE);
+
+          // Get current speed from slider
+          BYPASS_RATE = parseFloat(speedSlider.value);
 
           // PROCESS BYPASS
-          bypassedBuffer = await processBypass(currentBuffer);
+          bypassedBuffer = await processBypass(currentBuffer, BYPASS_RATE);
           
           // CREATE PREVIEW WAV FROM BYPASSED BUFFER
           const wavBlob = audioBufferToWav(bypassedBuffer);
@@ -1456,10 +1535,12 @@
           speedSlider.value = BYPASS_RATE;
           speedValue.textContent = BYPASS_RATE.toFixed(2) + 'x';
           webSpeedDisplay.textContent = BYPASS_RATE.toFixed(2) + 'x';
-          ingameSpeedDisplay.textContent = (1 / BYPASS_RATE).toFixed(2);
+          const ingameSpeed = (1 / BYPASS_RATE).toFixed(2);
+          ingameSpeedDisplay.textContent = ingameSpeed;
           speedDurationEl.textContent = formatTime(bypassedBuffer.duration);
+          totalTimeEl.textContent = formatTime(bypassedBuffer.duration);
 
-          document.getElementById('bypassStatus').textContent = 'ACTIVE (CHIPMUNK)';
+          document.getElementById('bypassStatus').textContent = 'ACTIVE (CHIPMUNK ' + BYPASS_RATE.toFixed(2) + 'x)';
           document.getElementById('bypassStatus').style.color = '#00ff41';
           bypassNote.style.display = 'block';
 
@@ -1480,7 +1561,7 @@
           const remaining = getRemainingUploads(currentUser.email);
           updateUIAfterLogin();
 
-          showStatus('✅ Bypass aktif! Preview = Download = CHIPMUNK. Sisa upload: ' + remaining);
+          showStatus('✅ Bypass aktif! Speed: ' + BYPASS_RATE.toFixed(2) + 'x, Roblox PlaybackSpeed: ' + ingameSpeed + '. Sisa upload: ' + remaining);
         } catch (err) {
           showStatus('❌ Gagal proses audio: ' + err.message, true);
           console.error(err);
@@ -1515,6 +1596,15 @@
         handleFile(e.dataTransfer.files[0]);
       }
     });
+
+    // ===== SLIDER EVENT =====
+    speedSlider.addEventListener('input', () => {
+      const val = parseFloat(speedSlider.value);
+      speedValue.textContent = val.toFixed(2) + 'x';
+    });
+
+    // ===== REGENERATE BUTTON =====
+    regenerateBtn.addEventListener('click', regenerateBypass);
 
     // ===== PLAYBACK =====
     playBtn.addEventListener('click', async () => {
@@ -1639,13 +1729,13 @@
         const a = document.createElement('a');
         a.href = url;
         const baseName = currentFile.name.replace(/\.[^/.]+$/, '');
-        a.download = baseName + `_BYPASS_CHIPMUNK_2x.mp3`;
+        a.download = baseName + `_BYPASS_CHIPMUNK_${BYPASS_RATE.toFixed(2)}x.mp3`;
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
 
         setTimeout(() => URL.revokeObjectURL(url), 5000);
-        showStatus('✅ Download berhasil! Set PlaybackSpeed = 0.50 di Roblox untuk normal.');
+        showStatus('✅ Download berhasil! Set PlaybackSpeed = ' + (1/BYPASS_RATE).toFixed(2) + ' di Roblox untuk normal.');
       } catch (err) {
         showStatus('❌ Error: ' + err.message, true);
         console.error(err);
