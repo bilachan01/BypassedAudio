@@ -1,1791 +1,1304 @@
 <!DOCTYPE html>
+<!--
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃     メルズ • MELLS STUDIO     ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+  MELLSMUSIC STUDIO — Anti-Copyright Audio Bypass
+  by MellsMchlern
+-->
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Madcxvii STUDIO</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-      background-color: #080808;
-      background-image: 
-        linear-gradient(rgba(0, 255, 65, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 255, 65, 0.03) 1px, transparent 1px);
-      background-size: 30px 30px;
-      color: #e0e0e0;
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 20px;
-    }
-
-    .container {
-      width: 100%;
-      max-width: 900px;
-      margin-top: 20px;
-    }
-
-    /* ===== TOPBAR ===== */
-    .topbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(10, 10, 10, 0.95);
-      border: 1px solid #1a1a1a;
-      border-radius: 8px;
-      padding: 12px 20px;
-      margin-bottom: 20px;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .topbar-left {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .topbar-right {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .btn-top {
-      background: transparent;
-      border: 1px solid;
-      padding: 8px 16px;
-      font-size: 0.8rem;
-      font-family: 'Courier New', monospace;
-      cursor: pointer;
-      border-radius: 6px;
-      transition: all 0.25s ease;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      font-weight: bold;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      color: inherit;
-    }
-
-    .btn-roblox-top {
-      border-color: #ff6b00;
-      color: #ff6b00;
-    }
-    .btn-roblox-top:hover {
-      background: rgba(255, 107, 0, 0.1);
-      box-shadow: 0 0 15px rgba(255, 107, 0, 0.3);
-    }
-
-    .btn-wa-top {
-      border-color: #25D366;
-      color: #25D366;
-    }
-    .btn-wa-top:hover {
-      background: rgba(37, 211, 102, 0.1);
-      box-shadow: 0 0 15px rgba(37, 211, 102, 0.3);
-    }
-
-    .btn-premium-top {
-      border-color: #FFD700;
-      color: #FFD700;
-      animation: glowGold 2s ease-in-out infinite;
-    }
-    @keyframes glowGold {
-      0%, 100% { box-shadow: 0 0 5px rgba(255, 215, 0, 0.2); }
-      50% { box-shadow: 0 0 15px rgba(255, 215, 0, 0.5); }
-    }
-    .btn-premium-top:hover {
-      background: rgba(255, 215, 0, 0.1);
-    }
-
-    .btn-login-top {
-      border-color: #4285F4;
-      color: #4285F4;
-    }
-    .btn-login-top:hover {
-      background: rgba(66, 133, 244, 0.1);
-    }
-
-    .user-info {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-family: 'Courier New', monospace;
-      font-size: 0.8rem;
-    }
-
-    .user-avatar {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      border: 2px solid #00ff41;
-      background: #1a1a1a;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1rem;
-    }
-
-    .user-email {
-      color: #ccc;
-    }
-
-    .user-badge {
-      padding: 2px 8px;
-      border-radius: 4px;
-      font-size: 0.7rem;
-      font-weight: bold;
-    }
-
-    .badge-owner {
-      background: linear-gradient(135deg, #FFD700, #FFA500);
-      color: #000;
-    }
-
-    .badge-premium {
-      background: linear-gradient(135deg, #00ff41, #00cc33);
-      color: #000;
-    }
-
-    .badge-free {
-      background: #333;
-      color: #888;
-    }
-
-    .limit-info {
-      color: #ff6b00;
-      font-size: 0.75rem;
-    }
-
-    /* ===== HEADER ===== */
-    header {
-      text-align: center;
-      margin-bottom: 30px;
-      padding: 20px;
-      border: 1px solid rgba(0, 255, 65, 0.3);
-      border-radius: 8px;
-      background: rgba(0, 0, 0, 0.6);
-      backdrop-filter: blur(10px);
-    }
-
-    header h1 {
-      font-family: 'Courier New', Courier, monospace;
-      font-size: 2.2rem;
-      color: #00ff41;
-      text-shadow: 0 0 10px rgba(0, 255, 65, 0.5), 0 0 20px rgba(0, 255, 65, 0.3);
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      animation: pulse 3s ease-in-out infinite;
-    }
-
-    header p {
-      font-family: 'Courier New', Courier, monospace;
-      color: #888;
-      margin-top: 8px;
-      font-size: 0.9rem;
-      letter-spacing: 2px;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.85; }
-    }
-
-    /* ===== LOGIN PANEL ===== */
-    .login-panel {
-      background: rgba(10, 10, 10, 0.9);
-      border: 1px solid #00ff41;
-      border-radius: 12px;
-      padding: 30px;
-      margin-bottom: 20px;
-      text-align: center;
-      box-shadow: 0 0 20px rgba(0, 255, 65, 0.1);
-    }
-
-    .login-panel h2 {
-      color: #00ff41;
-      font-family: 'Courier New', monospace;
-      font-size: 1.2rem;
-      margin-bottom: 20px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
-
-    .login-input {
-      width: 100%;
-      max-width: 400px;
-      background: #1a1a1a;
-      border: 1px solid #333;
-      border-radius: 8px;
-      padding: 14px 18px;
-      color: #e0e0e0;
-      font-family: 'Courier New', monospace;
-      font-size: 1rem;
-      margin-bottom: 15px;
-      outline: none;
-      transition: border-color 0.2s;
-    }
-    .login-input:focus { border-color: #00ff41; }
-    .login-input::placeholder { color: #555; }
-
-    .login-btn {
-      width: 100%;
-      max-width: 400px;
-      background: transparent;
-      border: 2px solid #00ff41;
-      color: #00ff41;
-      padding: 14px;
-      font-family: 'Courier New', monospace;
-      font-size: 1rem;
-      cursor: pointer;
-      border-radius: 8px;
-      transition: all 0.25s ease;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-weight: bold;
-    }
-    .login-btn:hover {
-      background: rgba(0, 255, 65, 0.1);
-      box-shadow: 0 0 20px rgba(0, 255, 65, 0.2);
-    }
-
-    .login-note {
-      color: #555;
-      font-size: 0.8rem;
-      margin-top: 15px;
-      font-family: 'Courier New', monospace;
-    }
-
-    /* ===== UPLOAD ===== */
-    .upload-area {
-      border: 2px dashed #00ff41;
-      border-radius: 12px;
-      padding: 50px 30px;
-      text-align: center;
-      transition: all 0.3s ease;
-      background: rgba(10, 10, 10, 0.8);
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .upload-area::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(0, 255, 65, 0.05), transparent);
-      transition: left 0.5s;
-    }
-
-    .upload-area:hover::before { left: 100%; }
-
-    .upload-area:hover {
-      background: rgba(15, 15, 15, 0.9);
-      box-shadow: 0 0 30px rgba(0, 255, 65, 0.15);
-      border-color: #00ff41;
-    }
-
-    .upload-area.dragover {
-      background: rgba(0, 255, 65, 0.05);
-      box-shadow: 0 0 40px rgba(0, 255, 65, 0.2);
-    }
-
-    .upload-icon { font-size: 3rem; margin-bottom: 15px; opacity: 0.8; }
-
-    .upload-area p { color: #aaa; font-size: 1rem; line-height: 1.6; }
-
-    .upload-area .highlight {
-      color: #00ff41; font-weight: bold;
-      text-decoration: underline; text-underline-offset: 3px;
-    }
-
-    .upload-area small { display: block; margin-top: 10px; color: #555; font-size: 0.8rem; }
-
-    /* ===== INFO PANEL ===== */
-    .info-panel {
-      background: rgba(10, 10, 10, 0.9);
-      border: 1px solid #00ff41;
-      border-radius: 8px;
-      padding: 20px;
-      margin-top: 20px;
-      display: none;
-      box-shadow: 0 0 15px rgba(0, 255, 65, 0.1);
-    }
-
-    .info-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 0;
-      border-bottom: 1px solid #1a1a1a;
-    }
-    .info-row:last-child { border-bottom: none; }
-
-    .highlight-row {
-      background: rgba(0, 255, 65, 0.05);
-      margin: 10px -20px 0;
-      padding: 15px 20px;
-      border-top: 1px solid rgba(0, 255, 65, 0.3);
-      border-bottom: 1px solid rgba(0, 255, 65, 0.3);
-    }
-
-    .label { color: #888; font-family: 'Courier New', monospace; font-size: 0.9rem; }
-    .value { color: #00ff41; font-family: 'Courier New', monospace; font-weight: bold; font-size: 0.95rem; }
-
-    .copy-btn {
-      background: transparent; border: 1px solid #00ff41; color: #00ff41;
-      padding: 4px 12px; font-family: 'Courier New', monospace;
-      font-size: 0.75rem; cursor: pointer; border-radius: 4px;
-      margin-left: 10px; transition: all 0.2s;
-    }
-    .copy-btn:hover { background: #00ff41; color: #000; }
-
-    /* ===== CONTROLS ===== */
-    .controls {
-      background: rgba(10, 10, 10, 0.9);
-      border: 1px solid #1a1a1a;
-      border-radius: 8px;
-      padding: 25px;
-      margin-top: 20px;
-      display: none;
-    }
-
-    .slider-container { margin-bottom: 25px; }
-    .slider-container label {
-      display: flex; justify-content: space-between; align-items: center;
-      margin-bottom: 12px; font-family: 'Courier New', monospace;
-      color: #ccc; font-size: 0.95rem;
-    }
-
-    #speedValue {
-      color: #00ff41; font-weight: bold; font-size: 1.1rem;
-      text-shadow: 0 0 5px rgba(0, 255, 65, 0.3);
-    }
-
-    /* ===== SLIDER FIX ===== */
-    input[type=range] {
-      -webkit-appearance: none !important;
-      appearance: none !important;
-      width: 100% !important;
-      height: 6px !important;
-      background: #1a1a1a !important;
-      border-radius: 3px !important;
-      border: 1px solid #333 !important;
-      outline: none !important;
-      cursor: pointer !important;
-      margin: 10px 0 !important;
-      opacity: 1 !important;
-      pointer-events: auto !important;
-      display: block !important;
-    }
-
-    input[type=range]::-webkit-slider-thumb {
-      -webkit-appearance: none !important;
-      appearance: none !important;
-      height: 22px !important;
-      width: 22px !important;
-      border-radius: 50% !important;
-      background: #00ff41 !important;
-      cursor: pointer !important;
-      border: 2px solid #000 !important;
-      box-shadow: 0 0 10px rgba(0, 255, 65, 0.5), 0 0 20px rgba(0, 255, 65, 0.3) !important;
-      transition: transform 0.1s !important;
-      pointer-events: auto !important;
-    }
-
-    input[type=range]::-webkit-slider-thumb:hover {
-      transform: scale(1.2) !important;
-    }
-
-    input[type=range]::-moz-range-track {
-      width: 100% !important;
-      height: 6px !important;
-      cursor: pointer !important;
-      background: #1a1a1a !important;
-      border-radius: 3px !important;
-      border: 1px solid #333 !important;
-    }
-
-    input[type=range]::-moz-range-thumb {
-      height: 22px !important;
-      width: 22px !important;
-      border-radius: 50% !important;
-      background: #00ff41 !important;
-      cursor: pointer !important;
-      border: 2px solid #000 !important;
-      box-shadow: 0 0 10px rgba(0, 255, 65, 0.5) !important;
-    }
-
-    input[type=range]:disabled {
-      opacity: 0.5 !important;
-      cursor: not-allowed !important;
-    }
-
-    .speed-labels {
-      display: flex; justify-content: space-between;
-      font-size: 0.75rem; color: #555;
-      font-family: 'Courier New', monospace; margin-top: 5px;
-    }
-
-    .btn-group { 
-      display: flex; 
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      flex: 1;
-      background: transparent;
-      border: 2px solid #00ff41;
-      color: #00ff41;
-      padding: 14px 20px;
-      font-size: 0.95rem;
-      font-family: 'Courier New', monospace;
-      cursor: pointer;
-      border-radius: 6px;
-      transition: all 0.25s ease;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      font-weight: bold;
-      position: relative;
-      overflow: hidden;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 120px;
-    }
-
-    .btn::before {
-      content: ''; position: absolute;
-      top: 0; left: -100%; width: 100%; height: 100%;
-      background: rgba(0, 255, 65, 0.1);
-      transition: left 0.3s;
-    }
-    .btn:hover::before { left: 0; }
-    .btn:hover {
-      background: rgba(0, 255, 65, 0.1);
-      box-shadow: 0 0 20px rgba(0, 255, 65, 0.2);
-      transform: translateY(-2px);
-    }
-    .btn:active { transform: translateY(0); }
-
-    .btn-play { border-color: #00ff41; color: #00ff41; }
-    .btn-download { border-color: #00cc33; color: #00cc33; flex: 1.5; }
-    .btn-download:hover {
-      background: rgba(0, 204, 51, 0.1);
-      box-shadow: 0 0 20px rgba(0, 204, 51, 0.2);
-    }
-
-    .btn-regenerate {
-      border-color: #FFD700;
-      color: #FFD700;
-      flex: 1;
-    }
-    .btn-regenerate:hover {
-      background: rgba(255, 215, 0, 0.1);
-      box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
-    }
-
-    .progress-section {
-      margin-top: 20px;
-      display: none;
-    }
-
-    .time-display {
-      display: flex; justify-content: space-between;
-      font-family: 'Courier New', monospace;
-      font-size: 0.85rem; color: #888;
-      margin-bottom: 8px;
-    }
-
-    .progress-container {
-      width: 100%; height: 6px;
-      background: #1a1a1a; border-radius: 3px;
-      overflow: hidden; cursor: pointer;
-      border: 1px solid #333;
-    }
-
-    .progress-bar {
-      height: 100%; background: #00ff41;
-      width: 0%;
-      transition: width 0.1s linear;
-      box-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
-    }
-
-    #visualizer {
-      width: 100%; height: 100px;
-      background: #050505; border: 1px solid #1a1a1a;
-      border-radius: 6px; margin-top: 20px;
-      display: none;
-    }
-
-    .status {
-      margin-top: 15px; padding: 12px;
-      text-align: center;
-      font-family: 'Courier New', monospace;
-      font-size: 0.85rem; color: #00ff41;
-      min-height: 45px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 6px;
-      background: rgba(0, 255, 65, 0.03);
-      border: 1px solid transparent;
-      transition: all 0.3s;
-    }
-
-    .status.active {
-      background: rgba(0, 255, 65, 0.05);
-      border-color: rgba(0, 255, 65, 0.2);
-    }
-
-    .status.error {
-      color: #ff4444;
-      background: rgba(255, 68, 68, 0.05);
-      border-color: rgba(255, 68, 68, 0.2);
-    }
-
-    /* ===== MODALS ===== */
-    .modal-overlay {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0, 0, 0, 0.85);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-      backdrop-filter: blur(5px);
-    }
-
-    .modal-overlay.active { display: flex; }
-
-    .modal {
-      background: #0a0a0a;
-      border: 2px solid #00ff41;
-      border-radius: 12px;
-      padding: 30px;
-      max-width: 450px;
-      width: 90%;
-      box-shadow: 0 0 30px rgba(0, 255, 65, 0.2);
-      animation: modalIn 0.3s ease;
-    }
-
-    @keyframes modalIn {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .modal h2 {
-      color: #00ff41;
-      font-family: 'Courier New', monospace;
-      font-size: 1.3rem;
-      margin-bottom: 20px;
-      text-align: center;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 15px; right: 20px;
-      background: none; border: none;
-      color: #888; font-size: 1.5rem;
-      cursor: pointer;
-    }
-    .modal-close:hover { color: #ff4444; }
-
-    .modal-input {
-      width: 100%;
-      background: #1a1a1a;
-      border: 1px solid #333;
-      border-radius: 6px;
-      padding: 12px 15px;
-      color: #e0e0e0;
-      font-family: 'Courier New', monospace;
-      font-size: 0.9rem;
-      margin-bottom: 15px;
-      outline: none;
-      transition: border-color 0.2s;
-    }
-    .modal-input:focus { border-color: #00ff41; }
-
-    .modal-select {
-      width: 100%;
-      background: #1a1a1a;
-      border: 1px solid #333;
-      border-radius: 6px;
-      padding: 12px 15px;
-      color: #e0e0e0;
-      font-family: 'Courier New', monospace;
-      font-size: 0.9rem;
-      margin-bottom: 15px;
-      outline: none;
-      cursor: pointer;
-    }
-    .modal-select:focus { border-color: #00ff41; }
-
-    .modal-btn {
-      width: 100%;
-      background: transparent;
-      border: 2px solid #00ff41;
-      color: #00ff41;
-      padding: 12px;
-      font-family: 'Courier New', monospace;
-      font-size: 0.9rem;
-      cursor: pointer;
-      border-radius: 6px;
-      transition: all 0.2s;
-      text-transform: uppercase;
-      font-weight: bold;
-      letter-spacing: 1px;
-    }
-    .modal-btn:hover {
-      background: rgba(0, 255, 65, 0.1);
-      box-shadow: 0 0 15px rgba(0, 255, 65, 0.2);
-    }
-
-    .premium-card {
-      background: rgba(255, 215, 0, 0.05);
-      border: 1px solid rgba(255, 215, 0, 0.3);
-      border-radius: 8px;
-      padding: 15px;
-      margin-bottom: 15px;
-      text-align: center;
-    }
-
-    .premium-card h3 {
-      color: #FFD700;
-      font-family: 'Courier New', monospace;
-      font-size: 1rem;
-      margin-bottom: 10px;
-    }
-
-    .premium-price {
-      color: #FFD700;
-      font-size: 1.5rem;
-      font-weight: bold;
-      font-family: 'Courier New', monospace;
-    }
-
-    .premium-price span {
-      font-size: 0.8rem;
-      color: #888;
-    }
-
-    .premium-btn {
-      width: 100%;
-      background: linear-gradient(135deg, #FFD700, #FFA500);
-      border: none;
-      color: #000;
-      padding: 12px;
-      font-family: 'Courier New', monospace;
-      font-size: 0.9rem;
-      cursor: pointer;
-      border-radius: 6px;
-      transition: all 0.2s;
-      text-transform: uppercase;
-      font-weight: bold;
-      letter-spacing: 1px;
-      margin-top: 10px;
-      text-decoration: none;
-      display: inline-block;
-    }
-    .premium-btn:hover {
-      box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
-      transform: translateY(-2px);
-    }
-
-    .admin-panel {
-      background: rgba(255, 107, 0, 0.05);
-      border: 1px solid rgba(255, 107, 0, 0.3);
-      border-radius: 8px;
-      padding: 20px;
-      margin-top: 20px;
-      display: none;
-    }
-
-    .admin-panel h3 {
-      color: #ff6b00;
-      font-family: 'Courier New', monospace;
-      font-size: 1rem;
-      margin-bottom: 15px;
-      text-align: center;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
-
-    .premium-list {
-      max-height: 200px;
-      overflow-y: auto;
-      margin-top: 15px;
-    }
-
-    .premium-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 8px 12px;
-      background: rgba(255, 255, 255, 0.03);
-      border-radius: 4px;
-      margin-bottom: 8px;
-      font-family: 'Courier New', monospace;
-      font-size: 0.8rem;
-    }
-
-    .premium-item .email { color: #ccc; }
-    .premium-item .expires {
-      color: #ff6b00;
-      font-size: 0.75rem;
-    }
-
-    .premium-item .remove-btn {
-      background: transparent;
-      border: 1px solid #ff4444;
-      color: #ff4444;
-      padding: 2px 8px;
-      font-size: 0.7rem;
-      cursor: pointer;
-      border-radius: 4px;
-      font-family: 'Courier New', monospace;
-    }
-    .premium-item .remove-btn:hover {
-      background: #ff4444;
-      color: #000;
-    }
-
-    .bypass-note {
-      background: rgba(255, 107, 0, 0.08);
-      border: 1px solid rgba(255, 107, 0, 0.3);
-      border-radius: 8px;
-      padding: 15px;
-      margin-top: 15px;
-      font-family: 'Courier New', monospace;
-      font-size: 0.8rem;
-      color: #ffaa44;
-      line-height: 1.6;
-    }
-
-    footer {
-      margin-top: 40px;
-      text-align: center;
-      padding: 20px;
-      color: #444;
-      font-family: 'Courier New', monospace;
-      font-size: 0.8rem;
-      letter-spacing: 1px;
-    }
-
-    footer span { color: #00ff41; opacity: 0.6; }
-
-    @media (max-width: 600px) {
-      header h1 { font-size: 1.6rem; letter-spacing: 2px; }
-      .btn-group { flex-direction: column; }
-      .upload-area { padding: 30px 20px; }
-      .topbar { flex-direction: column; align-items: stretch; }
-      .topbar-left, .topbar-right { justify-content: center; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MELLSMUSIC — Anti-Copyright Audio Bypass</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#050505;--bg2:#0a0a0a;--bg3:#111;--card:#0d0d0d;--card2:#131313;
+  --border:#1a1a1a;--border2:#262626;--text:#f2f2f2;--muted:#888;--dim:#555;
+  --white:#fff;--black:#000;--lime:#c8f560;--lime2:#a3e635;--lime-dim:#5a6b2a;
+  --danger:#ef4444;--glass:rgba(13,13,13,0.85);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-height:100vh;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--lime);color:var(--black)}
+
+@keyframes spin-border{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.gborder{position:relative;border-radius:16px;z-index:1;overflow:hidden}
+.gborder::before{content:'';position:absolute;inset:-1.5px;border-radius:inherit;background:conic-gradient(from 0deg,#222,#fff,#222,#888,#222,#fff,#222);animation:spin-border 6s linear infinite;z-index:-2}
+.gborder::after{content:'';position:absolute;inset:0;border-radius:inherit;background:var(--card);z-index:-1;margin:1.5px}
+.gborder-dark::before{background:conic-gradient(from 0deg,#1a1a1a,#444,#1a1a1a,#222,#1a1a1a,#444,#1a1a1a)}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--glass);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;padding:0 24px}
+.logo{font-weight:800;font-size:1.1rem;letter-spacing:1px;color:var(--white);text-decoration:none;display:flex;align-items:center;gap:8px}
+.logo span{color:var(--lime)}
+.logo::before{content:'◆';color:var(--lime);font-size:0.9rem}
+.nav-links{display:flex;align-items:center;gap:8px}
+.nav-btn{color:var(--muted);text-decoration:none;font-size:0.8rem;font-weight:600;padding:8px 14px;border-radius:8px;transition:all .2s;background:none;border:1px solid transparent;cursor:pointer;font-family:'Inter',sans-serif}
+.nav-btn:hover{color:var(--white);border-color:var(--border2)}
+.nav-btn.primary{background:var(--lime);color:var(--black);border-color:var(--lime);font-weight:700}
+.nav-btn.primary:hover{background:var(--lime2);border-color:var(--lime2)}
+
+.hero{position:relative;padding:140px 24px 80px;text-align:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;pointer-events:none;opacity:0.4}
+.hero-bg::before{content:'';position:absolute;top:-20%;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,var(--lime-dim),transparent 70%);filter:blur(80px);opacity:0.3}
+.hero-inner{position:relative;z-index:2;max-width:900px;margin:0 auto}
+.badge{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border2);border-radius:999px;padding:6px 16px;font-size:0.7rem;font-weight:600;color:var(--muted);letter-spacing:1px;margin-bottom:24px;background:var(--card)}
+.badge-dot{width:6px;height:6px;border-radius:50%;background:var(--lime);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+.hero h1{font-size:clamp(2.2rem,6vw,4.2rem);font-weight:800;letter-spacing:-1.5px;line-height:1.05;margin-bottom:20px}
+.hero h1 .grad{background:linear-gradient(135deg,var(--white) 30%,var(--lime) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p{color:var(--muted);font-size:1rem;max-width:520px;margin:0 auto 32px;line-height:1.6}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn-lime{background:var(--lime);color:var(--black);border:none;padding:14px 32px;border-radius:999px;font-family:'Inter',sans-serif;font-size:0.9rem;font-weight:700;cursor:pointer;transition:all .2s;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+.btn-lime:hover{background:var(--lime2);transform:translateY(-2px);box-shadow:0 8px 30px rgba(200,245,96,0.2)}
+.btn-ghost2{background:transparent;color:var(--text);border:1px solid var(--border2);padding:14px 32px;border-radius:999px;font-family:'Inter',sans-serif;font-size:0.9rem;font-weight:600;cursor:pointer;transition:all .2s;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+.btn-ghost2:hover{border-color:var(--white);background:rgba(255,255,255,0.03)}
+
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:1000px;margin:0 auto 100px;padding:0 24px}
+.stat-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px 20px;text-align:center;transition:all .3s;position:relative;overflow:hidden}
+.stat-card:hover{border-color:var(--dim);transform:translateY(-4px)}
+.stat-card .num{font-size:2rem;font-weight:800;color:var(--lime);margin-bottom:6px;font-family:'JetBrains Mono',monospace}
+.stat-card .lbl{font-size:0.65rem;color:var(--dim);text-transform:uppercase;letter-spacing:2px;font-weight:600}
+
+.sec-title{text-align:center;margin-bottom:48px}
+.sec-title h2{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;letter-spacing:-1px;margin-bottom:12px}
+.sec-title p{color:var(--muted);font-size:0.95rem;max-width:500px;margin:0 auto}
+
+.features{max-width:1100px;margin:0 auto 100px;padding:0 24px}
+.feat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.feat-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:32px;transition:all .3s;position:relative;overflow:hidden}
+.feat-card:hover{border-color:var(--dim)}
+.feat-icon{width:44px;height:44px;border-radius:12px;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:20px;border:1px solid var(--border)}
+.feat-card h3{font-size:1.1rem;font-weight:700;margin-bottom:10px}
+.feat-card p{color:var(--muted);font-size:0.85rem;line-height:1.6;margin-bottom:16px}
+.feat-visual{height:60px;border-radius:10px;background:var(--bg3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;gap:6px;overflow:hidden;position:relative}
+.feat-bar{width:32px;border-radius:4px;background:var(--lime);opacity:0.7;animation:barMove 2s ease-in-out infinite}
+.feat-bar:nth-child(2){animation-delay:0.2s;height:60%}
+.feat-bar:nth-child(3){animation-delay:0.4s;height:80%}
+.feat-bar:nth-child(4){animation-delay:0.6s;height:40%}
+.feat-bar:nth-child(5){animation-delay:0.8s;height:70%}
+@keyframes barMove{0%,100%{height:30%}50%{height:90%}}
+
+.steps{max-width:1000px;margin:0 auto 100px;padding:0 24px}
+.steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;position:relative}
+.steps-grid::before{content:'';position:absolute;top:28px;left:12%;right:12%;height:1px;background:linear-gradient(90deg,transparent,var(--lime-dim),transparent);z-index:0}
+.step{text-align:center;position:relative;z-index:1}
+.step-num{width:56px;height:56px;border-radius:50%;background:var(--card);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:1rem;color:var(--muted);transition:all .3s}
+.step:hover .step-num{border-color:var(--lime);color:var(--lime);box-shadow:0 0 20px rgba(200,245,96,0.15)}
+.step h4{font-size:0.9rem;font-weight:700;margin-bottom:6px}
+.step p{color:var(--muted);font-size:0.78rem;line-height:1.5}
+
+.pricing{max-width:1000px;margin:0 auto 100px;padding:0 24px}
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:start}
+.price-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:32px 28px;transition:all .3s;position:relative}
+.price-card:hover{border-color:var(--dim);transform:translateY(-4px)}
+.price-card.best{border-color:var(--lime-dim);box-shadow:0 0 40px rgba(200,245,96,0.08)}
+.price-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--lime);color:var(--black);font-size:0.65rem;font-weight:800;padding:5px 14px;border-radius:999px;letter-spacing:1px;text-transform:uppercase}
+.price-card h3{font-size:0.75rem;color:var(--dim);text-transform:uppercase;letter-spacing:2px;margin-bottom:8px}
+.price-card .price{font-size:2.4rem;font-weight:800;margin-bottom:4px}
+.price-card .price span{font-size:0.85rem;color:var(--dim);font-weight:500}
+.price-card .desc{color:var(--muted);font-size:0.8rem;margin-bottom:24px;line-height:1.5}
+.price-card ul{list-style:none;margin-bottom:28px}
+.price-card li{display:flex;align-items:flex-start;gap:10px;margin-bottom:12px;font-size:0.82rem;color:var(--muted)}
+.price-card li svg{width:16px;height:16px;color:var(--lime);flex-shrink:0;margin-top:1px}
+.price-card li.locked{color:var(--dim);text-decoration:line-through;opacity:0.5}
+.price-card li.locked svg{color:var(--dim)}
+.price-btn{width:100%;padding:12px;border-radius:999px;font-family:'Inter',sans-serif;font-size:0.85rem;font-weight:700;cursor:pointer;transition:all .2s;border:none}
+.price-btn.lime{background:var(--lime);color:var(--black)}
+.price-btn.lime:hover{background:var(--lime2)}
+.price-btn.outline{background:transparent;color:var(--text);border:1px solid var(--border2)}
+.price-btn.outline:hover{border-color:var(--white)}
+
+.cta{max-width:900px;margin:0 auto 80px;padding:0 24px}
+.cta-card{background:var(--card);border:1px solid var(--border);border-radius:24px;padding:64px 40px;text-align:center;position:relative;overflow:hidden}
+.cta-card::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,var(--lime-dim),transparent 60%);opacity:0.15;pointer-events:none}
+.cta-card h2{font-size:clamp(1.6rem,4vw,2.6rem);font-weight:800;margin-bottom:12px;position:relative}
+.cta-card p{color:var(--muted);margin-bottom:28px;position:relative}
+
+footer{border-top:1px solid var(--border);padding:48px 24px}
+.footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px}
+.footer-brand .logo{margin-bottom:12px}
+.footer-brand p{color:var(--dim);font-size:0.8rem;line-height:1.6}
+.footer-col h4{font-size:0.65rem;color:var(--dim);text-transform:uppercase;letter-spacing:2px;margin-bottom:16px}
+.footer-col a{display:block;color:var(--muted);text-decoration:none;font-size:0.82rem;margin-bottom:10px;transition:color .2s}
+.footer-col a:hover{color:var(--white)}
+
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.85);backdrop-filter:blur(8px);z-index:200;display:none;align-items:center;justify-content:center;padding:20px}
+.modal-overlay.active{display:flex}
+.modal-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:40px;width:100%;max-width:420px;text-align:center;position:relative}
+.modal-card .icon{width:56px;height:56px;border-radius:14px;background:var(--bg3);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:1.5rem;border:1px solid var(--border)}
+.modal-card h3{font-size:1.3rem;font-weight:700;margin-bottom:8px}
+.modal-card>p{color:var(--muted);font-size:0.85rem;margin-bottom:28px}
+.g-btn{width:100%;display:flex;align-items:center;justify-content:center;gap:10px;padding:12px;border:1px solid var(--border2);border-radius:10px;background:var(--bg3);color:var(--text);font-family:'Inter',sans-serif;font-size:0.85rem;font-weight:600;cursor:pointer;transition:all .2s;margin-bottom:10px}
+.g-btn:hover{border-color:var(--dim);background:var(--card2)}
+.email-sep{display:flex;align-items:center;gap:12px;margin:20px 0;color:var(--dim);font-size:0.75rem}
+.email-sep::before,.email-sep::after{content:'';flex:1;height:1px;background:var(--border)}
+.email-input{width:100%;padding:12px 14px;border:1px solid var(--border2);border-radius:10px;background:var(--bg3);color:var(--text);font-family:'Inter',sans-serif;font-size:0.85rem;outline:none;margin-bottom:12px}
+.email-input:focus{border-color:var(--lime)}
+.login-submit{width:100%;padding:12px;border:none;border-radius:10px;background:var(--lime);color:var(--black);font-family:'Inter',sans-serif;font-size:0.85rem;font-weight:700;cursor:pointer;transition:all .2s}
+.login-submit:hover{background:var(--lime2)}
+.close-modal{position:absolute;top:16px;right:16px;width:32px;height:32px;border-radius:8px;border:none;background:var(--bg3);color:var(--muted);cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center}
+.close-modal:hover{color:var(--white);background:var(--border2)}
+
+#studio{display:none}
+.studio-wrap{max-width:1200px;margin:0 auto;padding:100px 24px 40px}
+.studio-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:32px;flex-wrap:wrap;gap:16px}
+.studio-header h2{font-size:1.4rem;font-weight:700}
+.studio-header .user-chip{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--border);border-radius:999px;padding:6px 16px 6px 6px}
+.user-chip .avatar{width:28px;height:28px;border-radius:50%;background:var(--lime);color:var(--black);display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:800}
+.user-chip .info{text-align:left}
+.user-chip .email{font-size:0.75rem;font-weight:600;color:var(--text)}
+.user-chip .plan{font-size:0.65rem;color:var(--lime);font-weight:700;text-transform:uppercase;letter-spacing:1px}
+.user-chip .plan.free{color:var(--muted)}
+
+.studio-grid{display:grid;grid-template-columns:1.2fr 0.8fr;gap:20px}
+
+.upload-zone{border:2px dashed var(--border2);border-radius:16px;padding:48px 24px;text-align:center;cursor:pointer;transition:all .3s;background:var(--card);position:relative;overflow:hidden}
+.upload-zone:hover,.upload-zone.dragover{border-color:var(--lime);background:var(--card2)}
+.upload-zone .u-icon{font-size:2rem;color:var(--dim);margin-bottom:12px}
+.upload-zone h3{font-size:1rem;font-weight:700;margin-bottom:6px}
+.upload-zone p{color:var(--muted);font-size:0.85rem;margin-bottom:8px}
+.upload-zone .fmt{color:var(--dim);font-size:0.7rem;font-family:'JetBrains Mono',monospace;letter-spacing:1px}
+
+.info-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:14px}
+.info-chip{background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:14px 16px}
+.info-chip .label{font-size:0.6rem;color:var(--dim);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:5px}
+.info-chip .value{font-family:'JetBrains Mono',monospace;font-size:0.85rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+.speed-box{background:var(--bg3);border:1px solid var(--border2);border-radius:12px;padding:18px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.speed-box .left h4{font-size:0.85rem;font-weight:700;margin-bottom:2px}
+.speed-box .left span{color:var(--dim);font-size:0.72rem;font-family:'JetBrains Mono',monospace}
+.speed-val{font-family:'JetBrains Mono',monospace;font-size:2rem;font-weight:700;color:var(--lime)}
+.btn-mini{background:transparent;border:1px solid var(--border2);color:var(--text);padding:8px 18px;font-family:'JetBrains Mono',monospace;font-size:0.72rem;font-weight:600;cursor:pointer;border-radius:8px;transition:all .15s}
+.btn-mini:hover{border-color:var(--lime);background:var(--lime);color:var(--black)}
+
+.player-top{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.btn-play{width:52px;height:52px;flex:0 0 52px;border-radius:50%;background:var(--lime);border:none;color:var(--black);font-size:1.05rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s}
+.btn-play:hover{transform:scale(1.06);box-shadow:0 0 20px rgba(200,245,96,0.3)}
+.player-meta{flex:1;min-width:0}
+.player-meta .p-name{font-size:0.9rem;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:3px}
+.player-meta .p-sub{font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--dim)}
+.progress-time{display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--dim);margin-bottom:6px}
+.progress-bar{width:100%;height:5px;background:#1a1a1a;border-radius:3px;overflow:hidden;cursor:pointer}
+.progress-fill{height:100%;background:var(--lime);width:0%;border-radius:3px;transition:width .1s linear}
+.vis-box{background:#000;border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-top:14px;position:relative}
+.vis-box canvas{display:block;width:100%;height:90px}
+.vis-label{position:absolute;bottom:6px;right:10px;font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:var(--dim);letter-spacing:1px}
+
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.tag{background:transparent;border:1px solid var(--border2);color:var(--muted);font-family:'JetBrains Mono',monospace;font-size:0.66rem;padding:5px 10px;border-radius:6px}
+
+.btn-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}
+.btn-row.single{grid-template-columns:1fr}
+.btn2{background:var(--lime);border:none;color:var(--black);padding:14px;border-radius:10px;font-family:'Inter',sans-serif;font-size:0.85rem;font-weight:700;cursor:pointer;transition:all .15s;display:flex;align-items:center;justify-content:center;gap:8px;text-decoration:none}
+.btn2:hover{background:var(--lime2)}
+.btn2:disabled{opacity:0.4;cursor:not-allowed}
+.btn2-ghost{background:transparent;border:1px solid var(--border2);color:var(--text);padding:14px;border-radius:10px;font-family:'Inter',sans-serif;font-size:0.85rem;font-weight:600;cursor:pointer;transition:all .15s;display:flex;align-items:center;justify-content:center;gap:8px;text-decoration:none}
+.btn2-ghost:hover{border-color:var(--white)}
+.btn2-ghost:disabled{opacity:0.4;cursor:not-allowed}
+
+.status{margin-top:16px;padding:13px 16px;border-radius:10px;font-family:'JetBrains Mono',monospace;font-size:0.75rem;display:flex;align-items:center;justify-content:center;gap:8px;text-align:center;border:1px solid var(--border);color:var(--dim);background:var(--bg3)}
+.status.ok{border-color:var(--lime);color:var(--lime)}
+.status.err{background:var(--white);border-color:var(--white);color:var(--black);font-weight:600}
+.status.load{color:var(--text);border-color:var(--border2);animation:blink 1.4s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.45}}
+
+.mobile-tip{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:14px;margin-top:14px;font-size:0.75rem;color:var(--muted);line-height:1.6}
+.mobile-tip b{color:var(--white)}
+.mobile-tip ol{padding-left:16px;margin-top:6px}
+.mobile-tip li{margin-bottom:4px}
+
+.limit-banner{background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+.limit-banner span{font-size:0.8rem;color:var(--muted)}
+.limit-banner span b{color:var(--lime)}
+.limit-banner .btn-premium-sm{background:var(--lime);color:var(--black);border:none;padding:8px 16px;border-radius:8px;font-size:0.75rem;font-weight:700;cursor:pointer;transition:all .2s}
+.limit-banner .btn-premium-sm:hover{background:var(--lime2)}
+
+.prem-modal .modal-card{max-width:480px}
+.prem-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
+.prem-option{background:var(--bg3);border:1.5px solid var(--border);border-radius:14px;padding:20px;text-align:left;cursor:pointer;transition:all .2s}
+.prem-option:hover{border-color:var(--dim)}
+.prem-option.selected{border-color:var(--lime);background:rgba(200,245,96,0.05)}
+.prem-option h4{font-size:0.7rem;color:var(--dim);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px}
+.prem-option .pr{font-size:1.6rem;font-weight:800;margin-bottom:4px}
+.prem-option .pr span{font-size:0.8rem;color:var(--dim);font-weight:500}
+.prem-option p{font-size:0.75rem;color:var(--muted)}
+
+.rbx-panel{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px}
+.rbx-panel h3{font-size:0.8rem;color:var(--dim);text-transform:uppercase;letter-spacing:2px;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.rbx-panel h3::after{content:'';flex:1;height:1px;background:var(--border)}
+.rbx-input{width:100%;padding:10px 12px;border:1px solid var(--border2);border-radius:8px;background:var(--bg3);color:var(--text);font-family:'Inter',sans-serif;font-size:0.8rem;outline:none;margin-bottom:10px}
+.rbx-input:focus{border-color:var(--lime)}
+.rbx-label{font-size:0.7rem;color:var(--dim);margin-bottom:4px;display:block}
+
+.hidden{display:none!important}
+
+@media(max-width:900px){
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .feat-grid{grid-template-columns:1fr}
+  .steps-grid{grid-template-columns:repeat(2,1fr);gap:30px 16px}
+  .steps-grid::before{display:none}
+  .price-grid{grid-template-columns:1fr;max-width:400px;margin:0 auto}
+  .footer-inner{grid-template-columns:1fr 1fr;gap:32px 24px}
+  .prem-grid{grid-template-columns:1fr}
+  .btn-row{grid-template-columns:1fr}
+  .studio-grid{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .hero{padding:120px 16px 60px}
+  .nav-links .nav-btn:not(.primary){display:none}
+  .stats{grid-template-columns:1fr 1fr;margin-bottom:60px}
+  .steps-grid{grid-template-columns:1fr}
+  .footer-inner{grid-template-columns:1fr}
+  .modal-card{padding:28px 20px}
+  .studio-wrap{padding:90px 16px 32px}
+}
+</style>
 <base target="_blank">
 </head>
 <body>
-  <div class="container">
-    <!-- TOPBAR -->
-    <div class="topbar" id="topbar">
-      <div class="topbar-left">
-        <a class="btn-top btn-roblox-top" href="https://create.roblox.com/dashboard/creations" target="_blank" rel="noopener noreferrer">
-          🚀 UPLOAD TO ROBLOX
-        </a>
-        <a class="btn-top btn-wa-top" href="https://whatsapp.com/channel/0029Vb7bDpv9sBIFbLE5LA0o" target="_blank" rel="noopener noreferrer">
-          📱 JOIN SALURAN WA
-        </a>
-      </div>
-      <div class="topbar-right" id="topbarRight">
-        <button class="btn-top btn-premium-top" id="btnPremium" onclick="openPremiumModal()">
-          ⭐ UPGRADE PREMIUM
-        </button>
-        <button class="btn-top btn-login-top" id="btnLogin" onclick="showLoginPanel()">
-          🔐 LOGIN
-        </button>
-      </div>
-    </div>
 
-    <header>
-      <h1>Madcxvii STUDIO</h1>
-      <p>SPEED MUSIC PROCESSOR FOR ROBLOX</p>
-    </header>
-
-    <!-- LOGIN PANEL -->
-    <div class="login-panel" id="loginPanel">
-      <h2>🔐 Login dengan Gmail</h2>
-      <input type="email" class="login-input" id="loginEmail" placeholder="Masukkan Gmail kamu...">
-      <br>
-      <button class="login-btn" onclick="doLogin()">MASUK</button>
-      <p class="login-note">⚠️ Harus Gmail asli (@gmail.com). Sistem akan cek format email.</p>
-    </div>
-
-    <div class="upload-area" id="uploadArea">
-      <div class="upload-icon">▶</div>
-      <p>Drag & Drop file audio di sini</p>
-      <p>atau <span class="highlight">Klik untuk Browse</span></p>
-      <small>Format: MP3, WAV, OGG, M4A</small>
-      <input type="file" id="fileInput" accept="audio/*" hidden>
-    </div>
-
-    <div class="info-panel" id="infoPanel">
-      <div class="info-row">
-        <span class="label">📁 FILE</span>
-        <span class="value" id="fileName">-</span>
-      </div>
-      <div class="info-row">
-        <span class="label">⏱ DURASI ORIGINAL</span>
-        <span class="value" id="origDuration">-</span>
-      </div>
-      <div class="info-row">
-        <span class="label">⏱ DURASI BYPASS</span>
-        <span class="value" id="speedDuration">-</span>
-      </div>
-      <div class="info-row">
-        <span class="label">⚡ BYPASS SPEED</span>
-        <span class="value" id="webSpeedDisplay">2.00x</span>
-      </div>
-      <div class="info-row">
-        <span class="label">🔒 BYPASS STATUS</span>
-        <span class="value" id="bypassStatus" style="color: #555;">OFF</span>
-      </div>
-      <div class="info-row highlight-row">
-        <span class="label">🎮 ROBLOX PLAYBACK SPEED</span>
-        <div style="display:flex;align-items:center;">
-          <span class="value" id="ingameSpeedDisplay">0.50</span>
-          <button class="copy-btn" id="copyBtn">COPY</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="controls" id="controls">
-      <div class="slider-container">
-        <label>
-          <span>BYPASS SPEED (GESER UNTUK MENGUBAH)</span>
-          <span id="speedValue">2.00x</span>
-        </label>
-        <input type="range" id="speedSlider" min="0.5" max="3.0" step="0.01" value="2.0">
-        <div class="speed-labels">
-          <span>0.5x</span>
-          <span>SLOW</span>
-          <span>NORMAL</span>
-          <span>FAST</span>
-          <span>3.0x</span>
-        </div>
-        <p style="color: #00ff41; font-size: 0.75rem; margin-top: 5px; font-family: 'Courier New';">
-          ✅ Slider AKTIF! Geser untuk mengubah kecepatan bypass.
-        </p>
-        <p style="color: #ff6b00; font-size: 0.75rem; margin-top: 5px; font-family: 'Courier New';">
-          ⚠️ Setelah ganti kecepatan, klik tombol "RE-GENERATE" untuk menerapkan perubahan.
-        </p>
-      </div>
-
-      <div class="btn-group">
-        <button class="btn btn-play" id="playBtn">▶ PLAY</button>
-        <button class="btn btn-regenerate" id="regenerateBtn">🔄 RE-GENERATE</button>
-        <button class="btn btn-download" id="downloadBtn">⬇ DOWNLOAD (MP3)</button>
-      </div>
-
-      <div class="progress-section" id="progressSection">
-        <div class="time-display">
-          <span id="currentTime">0:00</span>
-          <span id="totalTime">0:00</span>
-        </div>
-        <div class="progress-container" id="progressContainer">
-          <div class="progress-bar" id="progressBar"></div>
-        </div>
-      </div>
-
-      <div class="bypass-note" id="bypassNote" style="display: none;">
-        ⚠️ <b>PREVIEW = DOWNLOAD = CHIPMUNK</b> (pitch naik sesuai speed + EQ + noise)<br>
-        File ini sengaja dibikin beda supaya lolos copyright Roblox.<br>
-        Pas di-upload ke Roblox, set <b>PlaybackSpeed = 1/speed</b> untuk balikin ke normal.
-      </div>
-    </div>
-
-    <!-- ADMIN PANEL (Owner Only) -->
-    <div class="admin-panel" id="adminPanel">
-      <h3>👑 Owner Panel - Add Premium User</h3>
-      <input type="email" class="modal-input" id="adminEmailInput" placeholder="Masukkan Gmail user...">
-      <select class="modal-select" id="adminDurationSelect">
-        <option value="1">1 Hari</option>
-        <option value="3">3 Hari</option>
-        <option value="7" selected>1 Minggu</option>
-        <option value="14">2 Minggu</option>
-        <option value="30">1 Bulan</option>
-        <option value="90">3 Bulan</option>
-        <option value="365">1 Tahun</option>
-      </select>
-      <button class="modal-btn" onclick="addPremiumUser()">✅ ADD PREMIUM</button>
-      <div class="premium-list" id="premiumList"></div>
-    </div>
-
-    <canvas id="visualizer"></canvas>
-
-    <div class="status" id="status"></div>
-  </div>
-
-  <footer>
-    <p><span>by Madcxvii</span> | Madcxvii</p>
-  </footer>
-
-  <audio id="audioPlayer" crossorigin="anonymous"></audio>
-
-  <!-- PREMIUM MODAL -->
-  <div class="modal-overlay" id="premiumModal">
-    <div class="modal">
-      <h2>⭐ Upgrade Premium</h2>
-      <div class="premium-card">
-        <h3>🥇 SEMINGGU</h3>
-        <div class="premium-price">Rp 50.000 <span>/ minggu</span></div>
-        <a class="premium-btn" href="https://wa.me/6285143886084?text=Halo%20Madcxvii%2C%20saya%20mau%20upgrade%20premium%20Madcxvii%20STUDIO%20SEMINGGU%20Rp50.000" target="_blank" rel="noopener noreferrer">
-          💬 CHAT WA UPGRADE
-        </a>
-      </div>
-      <div class="premium-card">
-        <h3>🥈 SEBULAN</h3>
-        <div class="premium-price">Rp 80.000 <span>/ bulan</span></div>
-        <a class="premium-btn" href="https://wa.me/6285143886084?text=Halo%20Madcxvii%2C%20saya%20mau%20upgrade%20premium%20Madcxvii%20STUDIO%20SEBULAN%20Rp80.000" target="_blank" rel="noopener noreferrer">
-          💬 CHAT WA UPGRADE
-        </a>
-      </div>
-      <button class="modal-btn" onclick="closePremiumModal()" style="margin-top: 10px; border-color: #ff4444; color: #ff4444;">❌ TUTUP</button>
+<!-- ═══════════════════════ LANDING PAGE ═══════════════════════ -->
+<div id="landing">
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="#">MELLS<span>MUSIC</span></a>
+    <div class="nav-links">
+      <a class="nav-btn" href="#fitur">Fitur</a>
+      <a class="nav-btn" href="#cara-pakai">Cara Pakai</a>
+      <a class="nav-btn" href="#harga">Premium</a>
+      <button class="nav-btn primary" id="navLoginBtn">Buka Studio</button>
     </div>
   </div>
+</nav>
 
-  <script src="https://cdn.jsdelivr.net/npm/lamejs@1.2.1/lame.min.js"></script>
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div class="badge"><span class="badge-dot"></span> #1 AUDIO TOOL FOR ROBLOX CREATORS</div>
+    <h1>PROSES AUDIO KAMU<br><span class="grad">OPTIMASI SISTEM<br>UPLOAD KE ROBLOX</span></h1>
+    <p>Tool audio profesional khusus developer Roblox. Ubah pitch, speed, EQ, reverb — pastikan audio kamu optimal dan kompatibel dengan sistem dalam satu klik.</p>
+    <div class="hero-btns">
+      <button class="btn-lime" id="heroStartBtn">Mulai Gratis →</button>
+      <a class="btn-ghost2" href="#fitur">Lihat Fitur</a>
+    </div>
+  </div>
+</section>
 
-  <script>
-    // ===== CONFIG =====
-    const OWNER_EMAIL = 'ilailachan2007@gmail.com';
-    const DAILY_LIMIT = 9999999999999;
-    const WA_NUMBER = '6285143886084';
+<section class="stats">
+  <div class="stat-card gborder gborder-dark">
+    <div class="num">5+</div>
+    <div class="lbl">Format Audio</div>
+  </div>
+  <div class="stat-card gborder gborder-dark">
+    <div class="num">9-Band</div>
+    <div class="lbl">Studio EQ</div>
+  </div>
+  <div class="stat-card gborder gborder-dark">
+    <div class="num">15+</div>
+    <div class="lbl">Preset Instan</div>
+  </div>
+  <div class="stat-card gborder gborder-dark">
+    <div class="num">100%</div>
+    <div class="lbl">Browser Based</div>
+  </div>
+</section>
 
-    // ===== AUTO BYPASS CONFIG =====
-    let BYPASS_RATE = 2.00;
-    const BYPASS_CUT_SECONDS = 0.08;
-    const BYPASS_NOISE_LEVEL = 0.005;
+<section class="features" id="fitur">
+  <div class="sec-title">
+    <h2>Engine Audio Kelas Pro</h2>
+    <p>Dari EQ profesional sampai optimasi sistem, semuanya berjalan secara real-time langsung di dalam browser kamu tanpa perlu install software tambahan.</p>
+  </div>
+  <div class="feat-grid">
+    <div class="feat-card gborder">
+      <div class="feat-icon">🎛️</div>
+      <h3>SMART AUDIO OPTIMIZER</h3>
+      <p>Satu klik untuk mengaplikasikan kombinasi cerdas dari speed, pitch, EQ, reverb, dan chorus. Dirancang secara spesifik agar aset audio kamu lebih optimal dan kompatibel dengan sistem engine Roblox tanpa mengorbankan kualitas suara.</p>
+      <div class="feat-visual">
+        <div class="feat-bar" style="height:40%"></div>
+        <div class="feat-bar" style="height:70%"></div>
+        <div class="feat-bar" style="height:50%"></div>
+        <div class="feat-bar" style="height:80%"></div>
+        <div class="feat-bar" style="height:60%"></div>
+      </div>
+    </div>
+    <div class="feat-card gborder">
+      <div class="feat-icon">📊</div>
+      <h3>EQ 9 BAND</h3>
+      <p>Kontrol penuh frekuensi dari 60Hz sampai 16kHz. Tersedia 8 preset EQ siap pakai seperti Bass Boost, Vocal, Lo-Fi, dan Rock.</p>
+      <div class="feat-visual">
+        <div class="feat-bar" style="height:30%"></div>
+        <div class="feat-bar" style="height:60%"></div>
+        <div class="feat-bar" style="height:90%"></div>
+        <div class="feat-bar" style="height:50%"></div>
+        <div class="feat-bar" style="height:40%"></div>
+      </div>
+    </div>
+    <div class="feat-card gborder">
+      <div class="feat-icon">✂️</div>
+      <h3>TRIM & CROP PRESISI</h3>
+      <p>Potong bagian audio yang tidak kamu inginkan langsung di browser. Tinggal geser titik awal dan titik akhir lagu sesuai keinginan.</p>
+      <div class="feat-visual" style="gap:0">
+        <div style="width:20%;height:100%;background:var(--bg);opacity:0.5"></div>
+        <div style="width:60%;height:100%;background:var(--lime);opacity:0.15"></div>
+        <div style="width:20%;height:100%;background:var(--bg);opacity:0.5"></div>
+      </div>
+    </div>
+    <div class="feat-card gborder">
+      <div class="feat-icon">🎚️</div>
+      <h3>15+ PRESET & EFFECTS CHAIN LENGKAP</h3>
+      <p>Ubah nuansa lagumu dalam satu klik dengan preset. Kamu juga bisa meracik efekmu sendiri menggunakan parameter Reverb, Echo/Delay, Distortion, Chorus, dan Phaser.</p>
+      <div class="feat-visual" style="gap:8px;justify-content:flex-start;padding:0 16px">
+        <span style="font-size:0.6rem;color:var(--dim);border:1px solid var(--border);padding:4px 10px;border-radius:999px">REVERB</span>
+        <span style="font-size:0.6rem;color:var(--dim);border:1px solid var(--border);padding:4px 10px;border-radius:999px">BASS BOOST</span>
+        <span style="font-size:0.6rem;color:var(--lime);border:1px solid var(--lime-dim);padding:4px 10px;border-radius:999px">LO-FI</span>
+      </div>
+    </div>
+  </div>
+</section>
 
-    // ===== AUTH STATE =====
-    let currentUser = null;
-    let userUploads = {};
-    let premiumUsers = JSON.parse(localStorage.getItem('mells_premium_users') || '[]');
+<section class="steps" id="cara-pakai">
+  <div class="sec-title">
+    <h2>Simpel & Cepat</h2>
+    <p>Hanya 4 langkah mudah dan audio kamu siap di-upload ke platform game.</p>
+  </div>
+  <div class="steps-grid">
+    <div class="step">
+      <div class="step-num">01</div>
+      <h4>Login</h4>
+      <p>Masuk dengan akun Google kamu untuk membuka studio.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <h4>Upload Audio</h4>
+      <p>Drag & drop file MP3, WAV, OGG, atau FLAC ke dalam studio.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <h4>Proses Audio</h4>
+      <p>Klik Smart Optimizer atau racik efek secara manual.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <h4>Export & Upload</h4>
+      <p>Download hasil render (MP3/WAV) dan upload langsung ke projectmu.</p>
+    </div>
+  </div>
+</section>
 
-    // ===== AUDIO CONTEXT & STATE =====
-    const AudioContext = window.AudioContext || window.webkitAudioContext;
-    const audioCtx = new AudioContext();
-    const audioElement = document.getElementById('audioPlayer');
+<section class="pricing" id="harga">
+  <div class="sec-title">
+    <h2>Mulai Gratis, Kapan Aja.</h2>
+    <p>Gunakan versi gratis selamanya, atau upgrade kapan pun kamu butuh limit export yang lebih banyak.</p>
+  </div>
+  <div class="price-grid">
+    <div class="price-card gborder">
+      <h3>Free</h3>
+      <div class="price">Rp 0</div>
+      <div class="desc">Paket dasar yang gratis selamanya. Cocok untuk penggunaan personal sesekali.</div>
+      <ul>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>5x Export per hari</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Semua fitur audio</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Bypass Optimal (Custom)</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Bantuan via Discord</li>
+        <li class="locked"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Export unlimited</li>
+      </ul>
+      <button class="price-btn outline" id="priceFreeBtn">Mulai Gratis</button>
+    </div>
+    <div class="price-card gborder">
+      <h3>Basic</h3>
+      <div class="price">Rp30K<span>/minggu</span></div>
+      <div class="desc">Pilihan terbaik untuk developer yang sedang aktif mengerjakan project map.</div>
+      <ul>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Export unlimited</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Semua fitur audio</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Bypass Optimal (Custom)</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Bantuan via Discord</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Masa aktif 1 minggu</li>
+      </ul>
+      <button class="price-btn lime" onclick="openPremium('Basic')">Hubungi Admin</button>
+    </div>
+    <div class="price-card best gborder">
+      <div class="price-badge">⭐ Best Seller</div>
+      <h3>Premium</h3>
+      <div class="price">Rp60K<span>/bulan</span></div>
+      <div class="desc">Solusi paling hemat untuk studio game profesional jangka panjang.</div>
+      <ul>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Export unlimited</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Semua fitur audio</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Bypass Optimal (Custom)</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Bantuan via Discord</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Masa aktif 1 bulan</li>
+      </ul>
+      <button class="price-btn lime" onclick="openPremium('Premium')">Hubungi Admin</button>
+    </div>
+  </div>
+</section>
 
-    let currentBuffer = null;
-    let currentFile = null;
-    let bypassedBuffer = null;
-    let previewURL = null;
-    let objectURL = null;
-    let mediaSourceConnected = false;
-    let analyser = null;
-    let animationId = null;
-    let originalDuration = 0;
-    let isProcessing = false;
+<section class="cta">
+  <div class="cta-card gborder">
+    <h2>Siap mengoptimalkan aset audiomu?</h2>
+    <p>Mulai gratis sekarang. Tidak perlu kartu kredit, tidak ada iklan, proses 100% di browser.</p>
+    <button class="btn-lime" id="ctaStartBtn">Buka Studio Sekarang 🚀</button>
+  </div>
+</section>
 
-    // ===== DOM ELEMENTS =====
-    const uploadArea = document.getElementById('uploadArea');
-    const fileInput = document.getElementById('fileInput');
-    const infoPanel = document.getElementById('infoPanel');
-    const controls = document.getElementById('controls');
-    const adminPanel = document.getElementById('adminPanel');
-    const loginPanel = document.getElementById('loginPanel');
-    const topbarRight = document.getElementById('topbarRight');
-    const speedSlider = document.getElementById('speedSlider');
-    const speedValue = document.getElementById('speedValue');
-    const webSpeedDisplay = document.getElementById('webSpeedDisplay');
-    const ingameSpeedDisplay = document.getElementById('ingameSpeedDisplay');
-    const speedDurationEl = document.getElementById('speedDuration');
-    const playBtn = document.getElementById('playBtn');
-    const downloadBtn = document.getElementById('downloadBtn');
-    const regenerateBtn = document.getElementById('regenerateBtn');
-    const copyBtn = document.getElementById('copyBtn');
-    const statusEl = document.getElementById('status');
-    const canvas = document.getElementById('visualizer');
-    const canvasCtx = canvas.getContext('2d');
-    const progressSection = document.getElementById('progressSection');
-    const progressBar = document.getElementById('progressBar');
-    const progressContainer = document.getElementById('progressContainer');
-    const currentTimeEl = document.getElementById('currentTime');
-    const totalTimeEl = document.getElementById('totalTime');
-    const bypassNote = document.getElementById('bypassNote');
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a class="logo" href="#">MELLS<span>MUSIC</span></a>
+      <p>© 2026 MELLS STUDIO. Designed for high-performance Roblox audio workflows.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Platform</h4>
+      <a href="#fitur">Fitur</a>
+      <a href="#cara-pakai">Cara Pakai</a>
+      <a href="#harga">Harga</a>
+    </div>
+    <div class="footer-col">
+      <h4>Community</h4>
+      <a href="https://www.tiktok.com/@moomymells" target="_blank">TikTok</a>
+      <a href="https://create.roblox.com/dashboard/creations" target="_blank">Roblox</a>
+      <a href="https://saweria.co/mellsmchelrn" target="_blank">Saweria</a>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+    </div>
+  </div>
+</footer>
+</div>
 
-    // ===== UTILITIES =====
-    function formatTime(seconds) {
-      if (!isFinite(seconds)) return '0:00';
-      const m = Math.floor(seconds / 60);
-      const s = Math.floor(seconds % 60);
-      return m + ':' + (s < 10 ? '0' : '') + s;
-    }
+<!-- ═══════════════════════ LOGIN MODAL ═══════════════════════ -->
+<div class="modal-overlay" id="loginModal">
+  <div class="modal-card gborder">
+    <button class="close-modal" onclick="closeLogin()">✕</button>
+    <div class="icon">🎵</div>
+    <h3>MELLSMUSIC Studio</h3>
+    <p>Login dengan Google untuk menggunakan studio.</p>
+    <input type="email" class="email-input" id="customEmail" placeholder="Masukkan email Google kamu..." style="margin-bottom:16px">
+    <button class="login-submit" onclick="loginCustom()">🚀 Masuk ke Studio</button>
 
-    function showStatus(msg, isError = false) {
-      statusEl.textContent = msg;
-      statusEl.classList.add('active');
-      statusEl.classList.toggle('error', isError);
-      if (!isError) {
-        setTimeout(() => {
-          statusEl.classList.remove('active');
-        }, 3000);
-      }
-    }
+  </div>
+</div>
 
-    function getTodayKey() {
-      const now = new Date();
-      return now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate();
-    }
+<!-- ═══════════════════════ PREMIUM MODAL ═══════════════════════ -->
+<div class="modal-overlay prem-modal" id="premiumModal">
+  <div class="modal-card gborder">
+    <button class="close-modal" onclick="closePremium()">✕</button>
+    <div class="icon">💎</div>
+    <h3>Upgrade ke Premium</h3>
+    <p>Pilih paket yang cocok buat kebutuhanmu. Pembayaran via WhatsApp.</p>
+    <div class="prem-grid">
+      <div class="prem-option" id="optBasic" onclick="selectPrem('Basic', 30000, '1 minggu')">
+        <h4>Basic</h4>
+        <div class="pr">Rp30K<span>/minggu</span></div>
+        <p>Unlimited export selama 1 minggu.</p>
+      </div>
+      <div class="prem-option selected" id="optPremium" onclick="selectPrem('Premium', 60000, '1 bulan')">
+        <h4>Premium</h4>
+        <div class="pr">Rp60K<span>/bulan</span></div>
+        <p>Unlimited export selama 1 bulan. Best value!</p>
+      </div>
+    </div>
+    <button class="login-submit" onclick="checkoutWA()">Lanjut ke WhatsApp</button>
+  </div>
+</div>
 
-    function getUploadCount(email) {
-      const key = 'mells_uploads_' + email;
-      const data = JSON.parse(localStorage.getItem(key) || '{}');
-      const today = getTodayKey();
-      return data[today] || 0;
-    }
-
-    function incrementUploadCount(email) {
-      const key = 'mells_uploads_' + email;
-      const data = JSON.parse(localStorage.getItem(key) || '{}');
-      const today = getTodayKey();
-      data[today] = (data[today] || 0) + 1;
-      localStorage.setItem(key, JSON.stringify(data));
-    }
-
-    function isPremium(email) {
-      const now = Date.now();
-      const user = premiumUsers.find(u => u.email === email);
-      if (!user) return false;
-      return user.expires > now;
-    }
-
-    function isOwner(email) {
-      return email === OWNER_EMAIL;
-    }
-
-    function canUpload(email) {
-      if (isOwner(email)) return true;
-      if (isPremium(email)) return true;
-      return getUploadCount(email) < DAILY_LIMIT;
-    }
-
-    function getRemainingUploads(email) {
-      if (isOwner(email)) return '∞';
-      if (isPremium(email)) return '∞';
-      return Math.max(0, DAILY_LIMIT - getUploadCount(email));
-    }
-
-    // ===== AUDIO CONTEXT HELPER =====
-    async function ensureAudioContext() {
-      if (audioCtx.state === 'suspended') {
-        await audioCtx.resume();
-      }
-    }
-
-    // ===== LOGIN SYSTEM =====
-    function showLoginPanel() {
-      loginPanel.style.display = 'block';
-      document.getElementById('loginEmail').focus();
-    }
-
-    function hideLoginPanel() {
-      loginPanel.style.display = 'none';
-    }
-
-    function doLogin() {
-      const email = document.getElementById('loginEmail').value.trim().toLowerCase();
-
-      if (!email) {
-        showStatus('❌ Masukkan Gmail dulu!', true);
-        return;
-      }
-
-      if (!email.endsWith('@gmail.com')) {
-        showStatus('❌ Harus Gmail asli (@gmail.com)!', true);
-        return;
-      }
-
-      const emailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
-      if (!emailRegex.test(email)) {
-        showStatus('❌ Format Gmail tidak valid!', true);
-        return;
-      }
-
-      currentUser = { email: email };
-      localStorage.setItem('mells_current_user', email);
-
-      hideLoginPanel();
-      updateUIAfterLogin();
-      showStatus('✅ Login berhasil! Selamat datang, ' + email);
-    }
-
-    function logout() {
-      currentUser = null;
-      localStorage.removeItem('mells_current_user');
-
-      topbarRight.innerHTML = `
-        <button class="btn-top btn-premium-top" id="btnPremium" onclick="openPremiumModal()">
-          ⭐ UPGRADE PREMIUM
-        </button>
-        <button class="btn-top btn-login-top" id="btnLogin" onclick="showLoginPanel()">
-          🔐 LOGIN
-        </button>
-      `;
-
-      adminPanel.style.display = 'none';
-      loginPanel.style.display = 'block';
-      uploadArea.style.opacity = '0.5';
-      uploadArea.style.pointerEvents = 'none';
-
-      showStatus('👋 Berhasil logout');
-    }
-
-    function updateUIAfterLogin() {
-      if (!currentUser) return;
-
-      const isUserOwner = isOwner(currentUser.email);
-      const isUserPremium = isPremium(currentUser.email);
-      const remaining = getRemainingUploads(currentUser.email);
-
-      let badgeClass = 'badge-free';
-      let badgeText = 'FREE';
-      if (isUserOwner) { badgeClass = 'badge-owner'; badgeText = 'OWNER'; }
-      else if (isUserPremium) { badgeClass = 'badge-premium'; badgeText = 'PREMIUM'; }
-
-      let premiumBtnHTML = `<button class="btn-top btn-premium-top" onclick="openPremiumModal()">⭐ UPGRADE PREMIUM</button>`;
-      let limitHTML = '';
-      if (!isUserOwner && !isUserPremium) {
-        limitHTML = `<span class="limit-info">${remaining}/5 hari ini</span>`;
-      }
-
-      topbarRight.innerHTML = `
-        <div class="user-info">
-          <div class="user-avatar">👤</div>
-          <span class="user-email">${currentUser.email}</span>
-          <span class="user-badge ${badgeClass}">${badgeText}</span>
-          ${limitHTML}
+<!-- ═══════════════════════ STUDIO / DASHBOARD ═══════════════════════ -->
+<div id="studio">
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="#" onclick="showLanding()">MELLS<span>MUSIC</span></a>
+    <div class="nav-links">
+      <button class="nav-btn" onclick="openPremium()">💎 Premium</button>
+      <div class="user-chip">
+        <div class="avatar" id="userAvatar">M</div>
+        <div class="info">
+          <div class="email" id="userEmailDisplay">user@gmail.com</div>
+          <div class="plan free" id="userPlanDisplay">Free</div>
         </div>
-        ${premiumBtnHTML}
-        <button class="btn-top btn-login-top" onclick="logout()">LOGOUT</button>
-      `;
+      </div>
+      <button class="nav-btn" onclick="logout()" style="color:var(--danger)">Keluar</button>
+    </div>
+  </div>
+</nav>
 
-      if (isUserOwner) {
-        adminPanel.style.display = 'block';
-        renderPremiumList();
-      }
+<div class="studio-wrap">
+  <div class="limit-banner" id="limitBanner">
+    <span>Download hari ini: <b id="dlCount">0 / 5</b></span>
+    <button class="btn-premium-sm" onclick="openPremium()">Upgrade Premium</button>
+  </div>
 
-      uploadArea.style.opacity = '1';
-      uploadArea.style.pointerEvents = 'auto';
-    }
-
-    function checkSavedLogin() {
-      const savedEmail = localStorage.getItem('mells_current_user');
-      if (savedEmail) {
-        currentUser = { email: savedEmail };
-        hideLoginPanel();
-        updateUIAfterLogin();
-      } else {
-        uploadArea.style.opacity = '0.5';
-        uploadArea.style.pointerEvents = 'none';
-      }
-    }
-
-    // ===== PREMIUM MODAL =====
-    function openPremiumModal() {
-      document.getElementById('premiumModal').classList.add('active');
-    }
-
-    function closePremiumModal() {
-      document.getElementById('premiumModal').classList.remove('active');
-    }
-
-    // ===== ADMIN PANEL =====
-    function addPremiumUser() {
-      const email = document.getElementById('adminEmailInput').value.trim().toLowerCase();
-      const days = parseInt(document.getElementById('adminDurationSelect').value);
-
-      if (!email || !email.includes('@gmail.com')) {
-        showStatus('❌ Masukkan Gmail yang valid!', true);
-        return;
-      }
-
-      const expires = Date.now() + (days * 24 * 60 * 60 * 1000);
-      premiumUsers = premiumUsers.filter(u => u.email !== email);
-      premiumUsers.push({ email, expires, addedAt: Date.now() });
-      localStorage.setItem('mells_premium_users', JSON.stringify(premiumUsers));
-
-      document.getElementById('adminEmailInput').value = '';
-      renderPremiumList();
-      showStatus('✅ Premium ditambahkan untuk ' + email + ' selama ' + days + ' hari');
-    }
-
-    function removePremiumUser(email) {
-      premiumUsers = premiumUsers.filter(u => u.email !== email);
-      localStorage.setItem('mells_premium_users', JSON.stringify(premiumUsers));
-      renderPremiumList();
-      showStatus('✅ Premium dihapus untuk ' + email);
-    }
-
-    function renderPremiumList() {
-      const listEl = document.getElementById('premiumList');
-      const now = Date.now();
-      const activeUsers = premiumUsers.filter(u => u.expires > now);
-
-      if (activeUsers.length === 0) {
-        listEl.innerHTML = '<div style="color:#555;text-align:center;padding:10px;font-family:Courier New;">Belum ada user premium</div>';
-        return;
-      }
-
-      listEl.innerHTML = activeUsers.map(u => {
-        const daysLeft = Math.ceil((u.expires - now) / (24 * 60 * 60 * 1000));
-        const dateStr = new Date(u.expires).toLocaleDateString('id-ID');
-        return `
-          <div class="premium-item">
-            <span class="email">${u.email}</span>
-            <span class="expires">${daysLeft} hari lagi (sampai ${dateStr})</span>
-            <button class="remove-btn" onclick="removePremiumUser('${u.email}')">HAPUS</button>
+  <div class="studio-grid">
+    <!-- LEFT: Processor -->
+    <div>
+      <div class="gborder" style="margin-bottom:16px">
+        <div style="padding:24px">
+          <div style="font-size:0.7rem;font-weight:700;color:var(--dim);text-transform:uppercase;letter-spacing:2px;margin-bottom:16px;display:flex;align-items:center;gap:8px">
+            Input Audio
+            <span style="flex:1;height:1px;background:var(--border)"></span>
           </div>
-        `;
-      }).join('');
+          <div class="upload-zone" id="uploadZone">
+            <div class="u-icon">📁</div>
+            <h3>Drop file atau klik untuk browse</h3>
+            <p>Semua diproses lokal di browser</p>
+            <div class="fmt">MP3 WAV OGG M4A FLAC</div>
+            <input type="file" id="fileInput" accept="audio/*" hidden>
+          </div>
+        </div>
+      </div>
+
+      <div class="gborder hidden" id="infoCard">
+        <div style="padding:24px">
+          <div style="font-size:0.7rem;font-weight:700;color:var(--dim);text-transform:uppercase;letter-spacing:2px;margin-bottom:16px;display:flex;align-items:center;gap:8px">
+            Hasil Proses
+            <span style="flex:1;height:1px;background:var(--border)"></span>
+          </div>
+          <div class="info-grid">
+            <div class="info-chip"><div class="label">File</div><div class="value" id="fName">-</div></div>
+            <div class="info-chip"><div class="label">Durasi Asli</div><div class="value" id="fDur">-</div></div>
+            <div class="info-chip"><div class="label">Speed</div><div class="value">2.30x</div></div>
+            <div class="info-chip"><div class="label">Durasi Hasil</div><div class="value" id="fSDur">-</div></div>
+          </div>
+          <div class="speed-box">
+            <div class="left"><h4>PlaybackSpeed</h4><span>paste ke Sound.PlaybackSpeed</span></div>
+            <div class="right" style="display:flex;align-items:center;gap:12px">
+              <span class="speed-val" id="rbSpeed">0.35</span>
+              <button class="btn-mini" id="copySpdBtn">COPY</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gborder hidden" id="playCard">
+        <div style="padding:24px">
+          <div style="font-size:0.7rem;font-weight:700;color:var(--dim);text-transform:uppercase;letter-spacing:2px;margin-bottom:16px;display:flex;align-items:center;gap:8px">
+            Preview
+            <span style="flex:1;height:1px;background:var(--border)"></span>
+          </div>
+          <div class="player-top">
+            <button class="btn-play" id="playBtn">▶</button>
+            <div class="player-meta">
+              <div class="p-name" id="pName">-</div>
+              <div class="p-sub" id="pSub">ANTI-DETECT MODE</div>
+            </div>
+          </div>
+          <div class="progress-time"><span id="curT">0:00</span><span id="totT">0:00</span></div>
+          <div class="progress-bar" id="progBar"><div class="progress-fill" id="progFill"></div></div>
+          <div class="vis-box">
+            <canvas id="visCanvas"></canvas>
+            <span class="vis-label">FREQ</span>
+          </div>
+          <div class="tags" id="bypassTags">
+            <span class="tag">Speed 2.30x</span>
+            <span class="tag">Pitch +1.2st</span>
+            <span class="tag">Stereo Widen</span>
+            <span class="tag">Light Chorus</span>
+            <span class="tag">Room Reverb</span>
+            <span class="tag">EQ Curve</span>
+            <span class="tag">Anti-Fingerprint</span>
+          </div>
+          <div class="btn-row">
+            <button class="btn2-ghost" id="dlBtn">⬇ Download MP3</button>
+            <button class="btn2" id="rbxBtn">🚀 Upload ke Roblox</button>
+          </div>
+          <div class="btn-row single hidden" id="shareRow">
+            <button class="btn2" id="shareBtn" style="background:var(--lime);color:var(--black)">📤 Share File</button>
+          </div>
+          <div class="mobile-tip hidden" id="mobileTip">
+            <b>Cara upload di HP:</b>
+            <ol>
+              <li>Download MP3 dulu</li>
+              <li>Buka Roblox app atau browser</li>
+              <li>Masuk Creator Dashboard → Audio</li>
+              <li>Pilih file dari folder Downloads</li>
+            </ol>
+          </div>
+          <div class="status" id="status">Siap.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Roblox Panel -->
+    <div>
+      <div class="gborder">
+        <div class="rbx-panel">
+          <h3>🚀 Roblox Upload</h3>
+          <label class="rbx-label">User ID Kamu</label>
+          <input type="text" class="rbx-input" id="rbxUserId" placeholder="Masukkan User ID...">
+          <label class="rbx-label">API Key (Opsional)</label>
+          <input type="text" class="rbx-input" id="rbxApiKey" placeholder="Masukkan API Key...">
+          <p style="font-size:0.72rem;color:var(--dim);margin-bottom:14px;line-height:1.5">
+            1. Buka Roblox Creator Hub<br>
+            2. Buat API Key di Settings<br>
+            3. Paste di atas untuk auto-upload
+          </p>
+          <button class="btn2-ghost" style="width:100%;margin-bottom:10px" onclick="window.open('https://create.roblox.com/dashboard/creations?activeTab=Audio','_blank')">🔗 Buka Roblox Creator Hub</button>
+          <button class="btn2" style="width:100%" id="rbxUploadBtn" disabled>⬆ Upload Audio ke Roblox</button>
+        </div>
+      </div>
+
+      <div class="gborder" style="margin-top:16px">
+        <div class="rbx-panel">
+          <h3>⚙️ Advanced Settings</h3>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px">
+            <div>
+              <label class="rbx-label">Speed</label>
+              <input type="number" class="rbx-input" id="setSpeed" value="2.30" step="0.1" min="0.5" max="5">
+            </div>
+            <div>
+              <label class="rbx-label">Pitch (st)</label>
+              <input type="number" class="rbx-input" id="setPitch" value="1.2" step="0.1">
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px">
+            <div>
+              <label class="rbx-label">Cut (detik)</label>
+              <input type="number" class="rbx-input" id="setCut" value="0.15" step="0.05">
+            </div>
+            <div>
+              <label class="rbx-label">Reverb (detik)</label>
+              <input type="number" class="rbx-input" id="setReverb" value="0.8" step="0.1">
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+            <button class="btn2-ghost" style="width:100%" onclick="reprocess()">🔄 Reprocess Audio</button>
+            <button class="btn2-ghost" style="width:100%" onclick="resetSettings()">↩ Reset Default</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<audio id="audioPlayer" crossorigin="anonymous"></audio>
+<script src="https://cdn.jsdelivr.net/npm/lamejs@1.2.1/lame.min.js"></script>
+
+<script>
+// ═══════════════════════════════════════════════════════════════
+// AUTH & LIMIT SYSTEM
+// ═══════════════════════════════════════════════════════════════
+const OWNER_EMAIL = 'Mells@gmail.com';
+const DAILY_LIMIT = 5;
+const WA_NUMBER = '6282174905591';
+
+let currentUser = null;
+let selectedPlan = { name: 'Premium', price: 60000, period: '1 bulan' };
+
+function getToday() { return new Date().toDateString(); }
+
+function getLimitData() {
+  const raw = localStorage.getItem('mells_limit');
+  if (!raw) return { date: getToday(), count: 0 };
+  const d = JSON.parse(raw);
+  if (d.date !== getToday()) return { date: getToday(), count: 0 };
+  return d;
+}
+
+function saveLimitData(d) { localStorage.setItem('mells_limit', JSON.stringify(d)); }
+
+function canDownload() {
+  if (!currentUser) return false;
+  if (currentUser.email === OWNER_EMAIL) return true;
+  const d = getLimitData();
+  return d.count < DAILY_LIMIT;
+}
+
+function incrementDownload() {
+  if (!currentUser || currentUser.email === OWNER_EMAIL) return;
+  const d = getLimitData();
+  d.count++;
+  saveLimitData(d);
+  updateLimitUI();
+}
+
+function updateLimitUI() {
+  const el = document.getElementById('dlCount');
+  const banner = document.getElementById('limitBanner');
+  if (!currentUser) { banner.style.display = 'none'; return; }
+  banner.style.display = 'flex';
+  if (currentUser.email === OWNER_EMAIL) {
+    el.innerHTML = 'UNLIMITED';
+    el.style.color = 'var(--lime)';
+  } else {
+    const d = getLimitData();
+    el.innerHTML = d.count + ' / ' + DAILY_LIMIT;
+    el.style.color = d.count >= DAILY_LIMIT ? 'var(--danger)' : 'var(--lime)';
+  }
+}
+
+function loginGoogle(email) {
+  currentUser = { email: email, name: email.split('@')[0] };
+  localStorage.setItem('mells_user', JSON.stringify(currentUser));
+  closeLogin();
+  showStudio();
+}
+
+function loginCustom() {
+  const email = document.getElementById('customEmail').value.trim();
+  if (!email || !email.includes('@')) { alert('Masukkan email valid'); return; }
+  loginGoogle(email);
+}
+
+function logout() {
+  currentUser = null;
+  localStorage.removeItem('mells_user');
+  showLanding();
+}
+
+function checkAuth() {
+  const raw = localStorage.getItem('mells_user');
+  if (raw) {
+    currentUser = JSON.parse(raw);
+    showStudio();
+  }
+}
+
+function showLanding() {
+  document.getElementById('landing').style.display = 'block';
+  document.getElementById('studio').style.display = 'none';
+}
+
+function showStudio() {
+  document.getElementById('landing').style.display = 'none';
+  document.getElementById('studio').style.display = 'block';
+  document.getElementById('userEmailDisplay').textContent = currentUser.email;
+  document.getElementById('userAvatar').textContent = currentUser.email[0].toUpperCase();
+  const planEl = document.getElementById('userPlanDisplay');
+  if (currentUser.email === OWNER_EMAIL) {
+    planEl.textContent = 'OWNER';
+    planEl.className = 'plan';
+    planEl.style.color = 'var(--lime)';
+  } else {
+    planEl.textContent = 'Free';
+    planEl.className = 'plan free';
+  }
+  updateLimitUI();
+}
+
+// Modal controls
+function openLogin() { document.getElementById('loginModal').classList.add('active'); }
+function closeLogin() { document.getElementById('loginModal').classList.remove('active'); }
+
+function openPremium(preselect) {
+  if (preselect === 'Basic') selectPrem('Basic', 30000, '1 minggu');
+  else if (preselect === 'Premium') selectPrem('Premium', 60000, '1 bulan');
+  document.getElementById('premiumModal').classList.add('active');
+}
+function closePremium() { document.getElementById('premiumModal').classList.remove('active'); }
+
+function selectPrem(name, price, period) {
+  selectedPlan = { name, price, period };
+  document.querySelectorAll('.prem-option').forEach(el => el.classList.remove('selected'));
+  document.getElementById(name === 'Basic' ? 'optBasic' : 'optPremium').classList.add('selected');
+}
+
+function checkoutWA() {
+  const text = `Halo MellsMchlern, saya mau upgrade ke paket ${selectedPlan.name} MELLSMUSIC seharga Rp${selectedPlan.price.toLocaleString('id-ID')} untuk ${selectedPlan.period}. Email: ${currentUser ? currentUser.email : 'belum login'}`;
+  window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`, '_blank');
+  closePremium();
+}
+
+// Event listeners for login triggers
+document.getElementById('navLoginBtn').addEventListener('click', openLogin);
+document.getElementById('heroStartBtn').addEventListener('click', openLogin);
+document.getElementById('ctaStartBtn').addEventListener('click', openLogin);
+document.getElementById('priceFreeBtn').addEventListener('click', openLogin);
+
+// Close modal on backdrop click
+document.querySelectorAll('.modal-overlay').forEach(m => {
+  m.addEventListener('click', e => { if (e.target === m) m.classList.remove('active'); });
+});
+
+// ═══════════════════════════════════════════════════════════════
+// AUDIO ENGINE (CLEAN — NO RAIN NOISE)
+// ═══════════════════════════════════════════════════════════════
+const SR_DEF = 2.30, CUT_DEF = 0.15;
+let buf = null, file = null, pbuf = null, purl = null, ms = false;
+let analyser = null, aid = null, odur = 0;
+const ac = new (window.AudioContext || window.webkitAudioContext)();
+const ap = document.getElementById('audioPlayer');
+const cvs = document.getElementById('visCanvas'), ctx = cvs.getContext('2d');
+
+function $(id) { return document.getElementById(id); }
+function fmt(s) { if (!isFinite(s)) return '0:00'; const m = Math.floor(s / 60), sc = Math.floor(s % 60); return m + ':' + (sc < 10 ? '0' : '') + sc; }
+function setSt(msg, type) { const s = $('status'); s.textContent = msg; s.className = 'status ' + (type || ''); }
+
+const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+function setupVis() {
+  if (ms) return;
+  try {
+    const s = ac.createMediaElementSource(ap);
+    analyser = ac.createAnalyser();
+    analyser.fftSize = 256;
+    s.connect(analyser);
+    analyser.connect(ac.destination);
+    ms = true;
+  } catch (e) { console.log('vis skip', e.message); }
+}
+
+function drawVis() {
+  if (!analyser) { aid = requestAnimationFrame(drawVis); return; }
+  const bl = analyser.frequencyBinCount, da = new Uint8Array(bl);
+  analyser.getByteFrequencyData(da);
+  ctx.fillStyle = '#000';
+  ctx.fillRect(0, 0, cvs.width, cvs.height);
+  const bw = cvs.width / bl;
+  let x = 0;
+  for (let i = 0; i < bl; i++) {
+    const p = da[i] / 255, bh = p * cvs.height;
+    const g = Math.floor(60 + p * 195);
+    ctx.fillStyle = 'rgb(' + g + ',' + g + ',' + g + ')';
+    ctx.fillRect(x, cvs.height - bh, bw - 1, bh);
+    x += bw;
+  }
+  aid = requestAnimationFrame(drawVis);
+}
+
+function resizeCvs() { const r = cvs.getBoundingClientRect(); cvs.width = r.width; cvs.height = r.height; }
+
+function wavBuf(buf) {
+  const nc = buf.numberOfChannels, sr = buf.sampleRate, dl = buf.length * nc * 2, tl = 44 + dl;
+  const ab = new ArrayBuffer(tl), v = new DataView(ab);
+  function w(o, s) { for (let i = 0; i < s.length; i++) v.setUint8(o + i, s.charCodeAt(i)); }
+  w(0, 'RIFF'); v.setUint32(4, tl - 8, true); w(8, 'WAVE'); w(12, 'fmt ');
+  v.setUint32(16, 16, true); v.setUint16(20, 1, true); v.setUint16(22, nc, true);
+  v.setUint32(24, sr, true); v.setUint32(28, sr * nc * 2, true); v.setUint16(32, nc * 2, true);
+  v.setUint16(34, 16, true); w(36, 'data'); v.setUint32(40, dl, true);
+  let off = 44;
+  for (let i = 0; i < buf.length; i++) {
+    for (let c = 0; c < nc; c++) {
+      const s = Math.max(-1, Math.min(1, buf.getChannelData(c)[i]));
+      v.setInt16(off, s < 0 ? s * 0x8000 : s * 0x7FFF, true); off += 2;
     }
+  }
+  return new Blob([ab], { type: 'audio/wav' });
+}
 
-    // ===== VISUALIZER =====
-    function setupVisualizer() {
-      if (mediaSourceConnected) return;
-      try {
-        const source = audioCtx.createMediaElementSource(audioElement);
-        analyser = audioCtx.createAnalyser();
-        analyser.fftSize = 256;
-        source.connect(analyser);
-        analyser.connect(audioCtx.destination);
-        mediaSourceConnected = true;
-      } catch (e) {
-        console.log('Visualizer setup skipped:', e.message);
-      }
-    }
+// ── CLEAN DSP FUNCTIONS (No random noise / rain) ──
 
-    function drawVisualizer() {
-      if (!analyser) {
-        animationId = requestAnimationFrame(drawVisualizer);
-        return;
-      }
-
-      const bufferLength = analyser.frequencyBinCount;
-      const dataArray = new Uint8Array(bufferLength);
-      analyser.getByteFrequencyData(dataArray);
-
-      canvasCtx.fillStyle = '#050505';
-      canvasCtx.fillRect(0, 0, canvas.width, canvas.height);
-
-      const barCount = bufferLength;
-      const barWidth = (canvas.width / barCount);
-      let x = 0;
-
-      for (let i = 0; i < barCount; i++) {
-        const percent = dataArray[i] / 255;
-        const barHeight = percent * canvas.height;
-        const hue = 120 + (percent * 40);
-        const lightness = 20 + (percent * 50);
-        canvasCtx.fillStyle = `hsl(${hue}, 100%, ${lightness}%)`;
-        canvasCtx.fillRect(x, canvas.height - barHeight, barWidth - 1, barHeight);
-        x += barWidth;
-      }
-
-      animationId = requestAnimationFrame(drawVisualizer);
-    }
-
-    function resizeCanvas() {
-      const rect = canvas.getBoundingClientRect();
-      canvas.width = rect.width;
-      canvas.height = rect.height;
-    }
-
-    // ===== WAV ENCODER (for preview) =====
-    function audioBufferToWav(buffer) {
-      const numChannels = buffer.numberOfChannels;
-      const sampleRate = buffer.sampleRate;
-      const bitDepth = 16;
-      const bytesPerSample = bitDepth / 8;
-      const blockAlign = numChannels * bytesPerSample;
-      
-      const dataLength = buffer.length * numChannels * bytesPerSample;
-      const headerLength = 44;
-      const totalLength = headerLength + dataLength;
-      
-      const arrayBuffer = new ArrayBuffer(totalLength);
-      const view = new DataView(arrayBuffer);
-      
-      function writeString(offset, string) {
-        for (let i = 0; i < string.length; i++) {
-          view.setUint8(offset + i, string.charCodeAt(i));
-        }
-      }
-      
-      writeString(0, 'RIFF');
-      view.setUint32(4, totalLength - 8, true);
-      writeString(8, 'WAVE');
-      writeString(12, 'fmt ');
-      view.setUint32(16, 16, true);
-      view.setUint16(20, 1, true);
-      view.setUint16(22, numChannels, true);
-      view.setUint32(24, sampleRate, true);
-      view.setUint32(28, sampleRate * blockAlign, true);
-      view.setUint16(32, blockAlign, true);
-      view.setUint16(34, bitDepth, true);
-      writeString(36, 'data');
-      view.setUint32(40, dataLength, true);
-      
-      let offset = 44;
-      for (let i = 0; i < buffer.length; i++) {
-        for (let c = 0; c < numChannels; c++) {
-          const sample = Math.max(-1, Math.min(1, buffer.getChannelData(c)[i]));
-          const intSample = sample < 0 ? sample * 0x8000 : sample * 0x7FFF;
-          view.setInt16(offset, intSample, true);
-          offset += 2;
-        }
-      }
-      
-      return new Blob([arrayBuffer], { type: 'audio/wav' });
-    }
-
-    // ===== BYPASS PROCESSING =====
-    async function applyEQ(buffer) {
-      const ctx = new OfflineAudioContext(buffer.numberOfChannels, buffer.length, buffer.sampleRate);
-      const source = ctx.createBufferSource();
-      source.buffer = buffer;
-      
-      const hp = ctx.createBiquadFilter();
-      hp.type = 'highpass';
-      hp.frequency.value = 150;
-      hp.Q.value = 0.7;
-      
-      const peak = ctx.createBiquadFilter();
-      peak.type = 'peaking';
-      peak.frequency.value = 5000;
-      peak.gain.value = 6;
-      peak.Q.value = 1;
-      
-      const hs = ctx.createBiquadFilter();
-      hs.type = 'highshelf';
-      hs.frequency.value = 10000;
-      hs.gain.value = 6;
-      
-      const ls = ctx.createBiquadFilter();
-      ls.type = 'lowshelf';
-      ls.frequency.value = 300;
-      ls.gain.value = -3;
-      
-      source.connect(hp);
-      hp.connect(peak);
-      peak.connect(hs);
-      hs.connect(ls);
-      ls.connect(ctx.destination);
-      
-      source.start();
-      return await ctx.startRendering();
-    }
-
-    function resampleChipmunk(buffer, rate, cutSeconds) {
-      const channels = buffer.numberOfChannels;
-      const sampleRate = buffer.sampleRate;
-      const cutSamples = Math.floor(cutSeconds * sampleRate);
-      const inputLength = buffer.length - cutSamples;
-      const outputLength = Math.max(1, Math.ceil(inputLength / rate));
-      
-      const newBuffer = new AudioBuffer({
-        length: outputLength,
-        numberOfChannels: channels,
-        sampleRate: sampleRate
-      });
-      
-      for (let c = 0; c < channels; c++) {
-        const inputData = buffer.getChannelData(c);
-        const outputData = newBuffer.getChannelData(c);
-        for (let i = 0; i < outputLength; i++) {
-          const srcIdx = cutSamples + Math.floor(i * rate);
-          if (srcIdx < buffer.length) {
-            outputData[i] = inputData[srcIdx];
-          } else {
-            outputData[i] = 0;
-          }
-        }
-      }
-      
-      return newBuffer;
-    }
-
-    function addNoise(buffer, level) {
-      for (let c = 0; c < buffer.numberOfChannels; c++) {
-        const data = buffer.getChannelData(c);
-        for (let i = 0; i < data.length; i++) {
-          const noise = (Math.random() * 2 - 1) * level;
-          data[i] = Math.max(-1, Math.min(1, data[i] + noise));
-        }
-      }
-      return buffer;
-    }
-
-    async function processBypass(buffer, rate) {
-      showStatus('🔧 Step 1/3: Applying EQ...');
-      const eqBuffer = await applyEQ(buffer);
-      
-      showStatus('🔧 Step 2/3: Resampling chipmunk ' + rate.toFixed(2) + 'x...');
-      let chipmunkBuffer = resampleChipmunk(eqBuffer, rate, BYPASS_CUT_SECONDS);
-      
-      showStatus('🔧 Step 3/3: Adding noise layer...');
-      chipmunkBuffer = addNoise(chipmunkBuffer, BYPASS_NOISE_LEVEL);
-      
-      return chipmunkBuffer;
-    }
-
-    async function regenerateBypass() {
-      if (!currentBuffer || isProcessing) return;
-
-      isProcessing = true;
-      regenerateBtn.disabled = true;
-      regenerateBtn.textContent = '⏳ PROCESSING...';
-
-      try {
-        // Get current speed from slider
-        BYPASS_RATE = parseFloat(speedSlider.value);
-        
-        showStatus('🔄 Regenerating bypass dengan speed ' + BYPASS_RATE.toFixed(2) + 'x...');
-        
-        // Process bypass dengan speed baru
-        bypassedBuffer = await processBypass(currentBuffer, BYPASS_RATE);
-        
-        // Update preview
-        if (previewURL) {
-          URL.revokeObjectURL(previewURL);
-        }
-        const wavBlob = audioBufferToWav(bypassedBuffer);
-        previewURL = URL.createObjectURL(wavBlob);
-        
-        // Update audio element
-        const wasPlaying = !audioElement.paused;
-        audioElement.src = previewURL;
-        audioElement.playbackRate = 1.0;
-        
-        if (wasPlaying) {
-          await audioElement.play();
-          playBtn.textContent = '⏸ PAUSE';
-        }
-        
-        // Update UI
-        speedValue.textContent = BYPASS_RATE.toFixed(2) + 'x';
-        webSpeedDisplay.textContent = BYPASS_RATE.toFixed(2) + 'x';
-        const ingameSpeed = (1 / BYPASS_RATE).toFixed(2);
-        ingameSpeedDisplay.textContent = ingameSpeed;
-        speedDurationEl.textContent = formatTime(bypassedBuffer.duration);
-        totalTimeEl.textContent = formatTime(bypassedBuffer.duration);
-        
-        document.getElementById('bypassStatus').textContent = 'ACTIVE (CHIPMUNK ' + BYPASS_RATE.toFixed(2) + 'x)';
-        document.getElementById('bypassStatus').style.color = '#00ff41';
-        bypassNote.style.display = 'block';
-        
-        showStatus('✅ Regenerate berhasil! Speed: ' + BYPASS_RATE.toFixed(2) + 'x, Roblox PlaybackSpeed: ' + ingameSpeed);
-        
-      } catch (err) {
-        showStatus('❌ Gagal regenerate: ' + err.message, true);
-        console.error(err);
-      } finally {
-        isProcessing = false;
-        regenerateBtn.disabled = false;
-        regenerateBtn.textContent = '🔄 RE-GENERATE';
-      }
-    }
-
-    // ===== FILE UPLOAD =====
-    function handleFile(file) {
-      if (!currentUser) {
-        showStatus('❌ Login dulu pake Gmail! Klik "LOGIN" di atas.', true);
-        showLoginPanel();
-        return;
-      }
-
-      if (!canUpload(currentUser.email)) {
-        showStatus('❌ Limit harian tercapai (5/hari). Upgrade premium atau tunggu reset besok!', true);
-        return;
-      }
-
-      if (!file || !file.type.startsWith('audio/')) {
-        showStatus('❌ File bukan audio! Pilih file MP3/WAV/OGG.', true);
-        return;
-      }
-
-      currentFile = file;
-
-      if (objectURL) {
-        URL.revokeObjectURL(objectURL);
-      }
-      if (previewURL) {
-        URL.revokeObjectURL(previewURL);
-      }
-
-      document.getElementById('fileName').textContent = file.name;
-      showStatus('⏳ Memuat audio & menyiapkan bypass...');
-
-      const reader = new FileReader();
-      reader.onload = async (e) => {
-        try {
-          await ensureAudioContext();
-          currentBuffer = await audioCtx.decodeAudioData(e.target.result);
-
-          originalDuration = currentBuffer.duration;
-          document.getElementById('origDuration').textContent = formatTime(originalDuration);
-
-          // Get current speed from slider
-          BYPASS_RATE = parseFloat(speedSlider.value);
-
-          // PROCESS BYPASS
-          bypassedBuffer = await processBypass(currentBuffer, BYPASS_RATE);
-          
-          // CREATE PREVIEW WAV FROM BYPASSED BUFFER
-          const wavBlob = audioBufferToWav(bypassedBuffer);
-          previewURL = URL.createObjectURL(wavBlob);
-          audioElement.src = previewURL;
-          
-          // AudioElement playbackRate = 1.0 because file is already chipmunk
-          audioElement.playbackRate = 1.0;
-          speedSlider.value = BYPASS_RATE;
-          speedValue.textContent = BYPASS_RATE.toFixed(2) + 'x';
-          webSpeedDisplay.textContent = BYPASS_RATE.toFixed(2) + 'x';
-          const ingameSpeed = (1 / BYPASS_RATE).toFixed(2);
-          ingameSpeedDisplay.textContent = ingameSpeed;
-          speedDurationEl.textContent = formatTime(bypassedBuffer.duration);
-          totalTimeEl.textContent = formatTime(bypassedBuffer.duration);
-
-          document.getElementById('bypassStatus').textContent = 'ACTIVE (CHIPMUNK ' + BYPASS_RATE.toFixed(2) + 'x)';
-          document.getElementById('bypassStatus').style.color = '#00ff41';
-          bypassNote.style.display = 'block';
-
-          infoPanel.style.display = 'block';
-          controls.style.display = 'block';
-          canvas.style.display = 'block';
-          progressSection.style.display = 'block';
-          resizeCanvas();
-
-          if (!animationId) {
-            drawVisualizer();
-          }
-
-          setupVisualizer();
-
-          // INCREMENT UPLOAD COUNT DAN UPDATE UI
-          incrementUploadCount(currentUser.email);
-          const remaining = getRemainingUploads(currentUser.email);
-          updateUIAfterLogin();
-
-          showStatus('✅ Bypass aktif! Speed: ' + BYPASS_RATE.toFixed(2) + 'x, Roblox PlaybackSpeed: ' + ingameSpeed + '. Sisa upload: ' + remaining);
-        } catch (err) {
-          showStatus('❌ Gagal proses audio: ' + err.message, true);
-          console.error(err);
-        }
-      };
-      reader.readAsArrayBuffer(file);
-    }
-
-    uploadArea.addEventListener('click', () => {
-      if (!currentUser) {
-        showStatus('❌ Login dulu pake Gmail! Klik "LOGIN" di atas.', true);
-        showLoginPanel();
-        return;
-      }
-      fileInput.click();
-    });
-    fileInput.addEventListener('change', (e) => {
-      if (e.target.files.length > 0) handleFile(e.target.files[0]);
-    });
-
-    uploadArea.addEventListener('dragover', (e) => {
-      e.preventDefault();
-      uploadArea.classList.add('dragover');
-    });
-    uploadArea.addEventListener('dragleave', () => {
-      uploadArea.classList.remove('dragover');
-    });
-    uploadArea.addEventListener('drop', (e) => {
-      e.preventDefault();
-      uploadArea.classList.remove('dragover');
-      if (e.dataTransfer.files.length > 0) {
-        handleFile(e.dataTransfer.files[0]);
-      }
-    });
-
-    // ===== SLIDER EVENT =====
-    speedSlider.addEventListener('input', function() {
-      const val = parseFloat(this.value);
-      speedValue.textContent = val.toFixed(2) + 'x';
-    });
-
-    // ===== REGENERATE BUTTON =====
-    regenerateBtn.addEventListener('click', regenerateBypass);
-
-    // ===== PLAYBACK =====
-    playBtn.addEventListener('click', async () => {
-      if (!audioElement.src) return;
-      await ensureAudioContext();
-
-      if (audioElement.paused) {
-        audioElement.play();
-        playBtn.textContent = '⏸ PAUSE';
+function pShift(buf, st) {
+  const pr = Math.pow(2, st / 12);
+  const nc = buf.numberOfChannels, sr = buf.sampleRate, il = buf.length, ol = il;
+  const nb = new AudioBuffer({ length: ol, numberOfChannels: nc, sampleRate: sr });
+  for (let c = 0; c < nc; c++) {
+    const id = buf.getChannelData(c), od = nb.getChannelData(c);
+    for (let i = 0; i < ol; i++) {
+      const si = i / pr;
+      const idx = Math.floor(si);
+      const fr = si - idx;
+      if (idx >= 1 && idx + 2 < il) {
+        const p0 = id[idx - 1], p1 = id[idx], p2 = id[idx + 1], p3 = id[idx + 2];
+        od[i] = p1 + 0.5 * fr * (p2 - p0 + fr * (2 * p0 - 5 * p1 + 4 * p2 - p3 + fr * (3 * (p1 - p2) + p3 - p0)));
+      } else if (idx + 1 < il) {
+        od[i] = id[idx] * (1 - fr) + id[idx + 1] * fr;
+      } else if (idx < il) {
+        od[i] = id[idx];
       } else {
-        audioElement.pause();
-        playBtn.textContent = '▶ PLAY';
+        od[i] = 0;
       }
-    });
-
-    audioElement.addEventListener('ended', () => {
-      playBtn.textContent = '▶ PLAY';
-      progressBar.style.width = '0%';
-    });
-
-    audioElement.addEventListener('timeupdate', () => {
-      if (audioElement.duration) {
-        const percent = (audioElement.currentTime / audioElement.duration) * 100;
-        progressBar.style.width = percent + '%';
-        currentTimeEl.textContent = formatTime(audioElement.currentTime);
-      }
-    });
-
-    audioElement.addEventListener('loadedmetadata', () => {
-      totalTimeEl.textContent = formatTime(audioElement.duration);
-    });
-
-    progressContainer.addEventListener('click', (e) => {
-      if (!audioElement.duration) return;
-      const rect = progressContainer.getBoundingClientRect();
-      const percent = (e.clientX - rect.left) / rect.width;
-      audioElement.currentTime = percent * audioElement.duration;
-    });
-
-    document.addEventListener('keydown', (e) => {
-      if (e.code === 'Space' && document.activeElement !== speedSlider) {
-        e.preventDefault();
-        playBtn.click();
-      }
-    });
-
-    copyBtn.addEventListener('click', () => {
-      const val = ingameSpeedDisplay.textContent;
-      navigator.clipboard.writeText(val).then(() => {
-        showStatus('📋 Roblox Playback Speed disalin: ' + val);
-      }).catch(() => {
-        showStatus('❌ Gagal menyalin ke clipboard', true);
-      });
-    });
-
-    // ===== MP3 ENCODER =====
-    function encodeAudioBufferToMp3(audioBuffer) {
-      const channels = audioBuffer.numberOfChannels;
-      const sampleRate = audioBuffer.sampleRate;
-      const kbps = 192;
-
-      const mp3encoder = new lamejs.Mp3Encoder(channels, sampleRate, kbps);
-      const mp3Data = [];
-
-      const sampleBlockSize = 1152;
-      const leftData = audioBuffer.getChannelData(0);
-      const rightData = channels > 1 ? audioBuffer.getChannelData(1) : leftData;
-
-      const totalSamples = audioBuffer.length;
-
-      for (let i = 0; i < totalSamples; i += sampleBlockSize) {
-        const leftChunk = new Int16Array(sampleBlockSize);
-        const rightChunk = channels > 1 ? new Int16Array(sampleBlockSize) : null;
-
-        for (let j = 0; j < sampleBlockSize; j++) {
-          if (i + j < totalSamples) {
-            leftChunk[j] = Math.max(-32768, Math.min(32767, leftData[i + j] * 32767));
-            if (rightChunk) {
-              rightChunk[j] = Math.max(-32768, Math.min(32767, rightData[i + j] * 32767));
-            }
-          } else {
-            leftChunk[j] = 0;
-            if (rightChunk) rightChunk[j] = 0;
-          }
-        }
-
-        let mp3buf;
-        if (channels > 1) {
-          mp3buf = mp3encoder.encodeBuffer(leftChunk, rightChunk);
-        } else {
-          mp3buf = mp3encoder.encodeBuffer(leftChunk);
-        }
-
-        if (mp3buf.length > 0) {
-          mp3Data.push(mp3buf);
-        }
-      }
-
-      const mp3buf = mp3encoder.flush();
-      if (mp3buf.length > 0) {
-        mp3Data.push(mp3buf);
-      }
-
-      return new Blob(mp3Data, { type: 'audio/mp3' });
     }
+  }
+  return nb;
+}
 
-    // ===== DOWNLOAD =====
-    downloadBtn.addEventListener('click', async () => {
-      if (!bypassedBuffer || !currentFile) {
-        showStatus('❌ Upload file audio dulu!', true);
-        return;
-      }
+function rSpeed(buf, rate, cut) {
+  const nc = buf.numberOfChannels, sr = buf.sampleRate;
+  const cs = Math.floor(cut * sr);
+  const il = buf.length - cs;
+  const ol = Math.max(1, Math.ceil(il / rate));
+  const nb = new AudioBuffer({ length: ol, numberOfChannels: nc, sampleRate: sr });
+  for (let c = 0; c < nc; c++) {
+    const id = buf.getChannelData(c), od = nb.getChannelData(c);
+    for (let i = 0; i < ol; i++) {
+      const si = cs + Math.floor(i * rate);
+      od[i] = (si >= 0 && si < buf.length) ? id[si] : 0;
+    }
+  }
+  return nb;
+}
 
-      downloadBtn.disabled = true;
-      downloadBtn.textContent = '⏳ ENCODING MP3...';
-      showStatus('🔧 Encoding bypassed audio ke MP3...');
+function sWiden(buf, w) {
+  if (buf.numberOfChannels < 2) return buf;
+  const l = buf.getChannelData(0), r = buf.getChannelData(1);
+  const m = new Float32Array(buf.length), s = new Float32Array(buf.length);
+  for (let i = 0; i < buf.length; i++) {
+    m[i] = (l[i] + r[i]) / 2;
+    s[i] = (l[i] - r[i]) / 2 * w;
+  }
+  const delay = Math.floor(buf.sampleRate * 0.003);
+  for (let i = 0; i < buf.length; i++) {
+    const si = i - delay;
+    const side = (si >= 0) ? s[si] : 0;
+    l[i] = Math.max(-1, Math.min(1, m[i] + side));
+    r[i] = Math.max(-1, Math.min(1, m[i] - side));
+  }
+  return buf;
+}
 
-      try {
-        const mp3Blob = encodeAudioBufferToMp3(bypassedBuffer);
-        const url = URL.createObjectURL(mp3Blob);
+function lightChorus(buf, depth) {
+  const nc = buf.numberOfChannels, sr = buf.sampleRate;
+  const ds = Math.floor(sr * 0.015);
+  const rate = 0.4;
+  for (let c = 0; c < nc; c++) {
+    const d = buf.getChannelData(c);
+    const ch = new Float32Array(buf.length);
+    for (let i = 0; i < buf.length; i++) {
+      const lfo = Math.sin(2 * Math.PI * rate * i / sr + c * Math.PI / 3);
+      const delay = Math.floor(ds * (1 + lfo * 0.25));
+      const si = i - delay;
+      if (si >= 0 && si < buf.length) ch[i] = d[si] * depth;
+    }
+    for (let i = 0; i < buf.length; i++) {
+      d[i] = Math.max(-1, Math.min(1, d[i] + ch[i]));
+    }
+  }
+  return buf;
+}
 
-        const a = document.createElement('a');
-        a.href = url;
-        const baseName = currentFile.name.replace(/\.[^/.]+$/, '');
-        a.download = baseName + `_BYPASS_CHIPMUNK_${BYPASS_RATE.toFixed(2)}x.mp3`;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
+// CLEAN REVERB — no random noise, uses deterministic decay
+async function cleanReverb(buf, dur, decay) {
+  const nc = buf.numberOfChannels, sr = buf.sampleRate;
+  const rl = Math.floor(sr * dur);
+  const tl = buf.length + rl;
+  const octx = new OfflineAudioContext(nc, tl, sr);
+  const src = octx.createBufferSource();
+  src.buffer = buf;
+  const conv = octx.createConvolver();
+  const imp = octx.createBuffer(nc, rl, sr);
+  for (let c = 0; c < nc; c++) {
+    const id = imp.getChannelData(c);
+    for (let i = 0; i < rl; i++) {
+      const t = i / rl;
+      // Deterministic decay using sine — NO RANDOM
+      id[i] = Math.sin(i * 0.05 + c) * Math.pow(1 - t, decay) * 0.6;
+    }
+  }
+  conv.buffer = imp;
+  const dg = octx.createGain(); dg.gain.value = 0.82;
+  const wg = octx.createGain(); wg.gain.value = 0.18;
+  src.connect(dg); dg.connect(octx.destination);
+  src.connect(conv); conv.connect(wg); wg.connect(octx.destination);
+  src.start();
+  return octx.startRendering();
+}
 
-        setTimeout(() => URL.revokeObjectURL(url), 5000);
-        showStatus('✅ Download berhasil! Set PlaybackSpeed = ' + (1/BYPASS_RATE).toFixed(2) + ' di Roblox untuk normal.');
-      } catch (err) {
-        showStatus('❌ Error: ' + err.message, true);
-        console.error(err);
-      } finally {
-        downloadBtn.disabled = false;
-        downloadBtn.textContent = '⬇ DOWNLOAD (MP3)';
-      }
-    });
+async function smoothEQ(buf) {
+  const nc = buf.numberOfChannels, sr = buf.sampleRate;
+  const octx = new OfflineAudioContext(nc, buf.length, sr);
+  const src = octx.createBufferSource();
+  src.buffer = buf;
 
-    // ===== INIT =====
-    window.addEventListener('resize', resizeCanvas);
-    checkSavedLogin();
+  const hp = octx.createBiquadFilter();
+  hp.type = 'highpass'; hp.frequency.value = 160; hp.Q.value = 0.7;
 
-    document.getElementById('premiumModal').addEventListener('click', (e) => {
-      if (e.target.id === 'premiumModal') closePremiumModal();
-    });
+  const pk1 = octx.createBiquadFilter();
+  pk1.type = 'peaking'; pk1.frequency.value = 800; pk1.gain.value = -1.5; pk1.Q.value = 1.2;
 
-    // Test slider after load
-    console.log('Slider enabled:', !speedSlider.disabled);
-    console.log('Slider value:', speedSlider.value);
-  </script>
+  const pk2 = octx.createBiquadFilter();
+  pk2.type = 'peaking'; pk2.frequency.value = 2800; pk2.gain.value = 2.5; pk2.Q.value = 1.8;
+
+  const hs = octx.createBiquadFilter();
+  hs.type = 'highshelf'; hs.frequency.value = 6000; hs.gain.value = 2;
+
+  const ls = octx.createBiquadFilter();
+  ls.type = 'lowshelf'; ls.frequency.value = 100; ls.gain.value = -2;
+
+  src.connect(hp); hp.connect(pk1); pk1.connect(pk2); pk2.connect(hs); hs.connect(ls); ls.connect(octx.destination);
+  src.start();
+  return octx.startRendering();
+}
+
+function lightDither(buf, level) {
+  const nc = buf.numberOfChannels;
+  for (let c = 0; c < nc; c++) {
+    const d = buf.getChannelData(c);
+    for (let i = 0; i < d.length; i++) {
+      const n1 = Math.random() * 2 - 1;
+      const n2 = Math.random() * 2 - 1;
+      const dither = (n1 + n2) / 2 * level;
+      d[i] = Math.max(-1, Math.min(1, d[i] + dither));
+    }
+  }
+  return buf;
+}
+
+function gainDb(buf, db) {
+  const g = Math.pow(10, db / 20);
+  const nc = buf.numberOfChannels;
+  for (let c = 0; c < nc; c++) {
+    const d = buf.getChannelData(c);
+    for (let i = 0; i < d.length; i++) {
+      d[i] = Math.max(-1, Math.min(1, d[i] * g));
+    }
+  }
+  return buf;
+}
+
+function antiFP(buf, shift) {
+  const nc = buf.numberOfChannels;
+  for (let c = 0; c < nc; c++) {
+    const d = buf.getChannelData(c);
+    for (let i = 0; i < d.length; i++) {
+      const t = i / buf.sampleRate;
+      const varyingShift = shift * (1 + Math.sin(t * 0.3) * 0.3);
+      d[i] = Math.max(-1, Math.min(1, d[i] + (Math.random() - 0.5) * varyingShift));
+    }
+  }
+  return buf;
+}
+
+async function lowPassFinal(buf, freq) {
+  const nc = buf.numberOfChannels, sr = buf.sampleRate;
+  const octx = new OfflineAudioContext(nc, buf.length, sr);
+  const src = octx.createBufferSource();
+  src.buffer = buf;
+  const lp = octx.createBiquadFilter();
+  lp.type = 'lowpass';
+  lp.frequency.value = freq;
+  lp.Q.value = 0.7;
+  src.connect(lp);
+  lp.connect(octx.destination);
+  src.start();
+  return octx.startRendering();
+}
+
+function normalize(buf) {
+  let mv = 0;
+  for (let c = 0; c < buf.numberOfChannels; c++) {
+    const d = buf.getChannelData(c);
+    for (let i = 0; i < d.length; i++) mv = Math.max(mv, Math.abs(d[i]));
+  }
+  if (mv > 0.95) {
+    const sc = 0.95 / mv;
+    for (let c = 0; c < buf.numberOfChannels; c++) {
+      const d = buf.getChannelData(c);
+      for (let i = 0; i < d.length; i++) d[i] *= sc;
+    }
+  }
+  return buf;
+}
+
+// ═══════ MAIN PROCESS CHAIN (CLEANER) ═══════
+async function processAudio(b) {
+  const SR = parseFloat($('setSpeed').value) || SR_DEF;
+  const CUT = parseFloat($('setCut').value) || CUT_DEF;
+  const PITCH = parseFloat($('setPitch').value) || 1.2;
+  const REVERB_DUR = parseFloat($('setReverb').value) || 0.8;
+
+  setSt('Step 1/9: Pitch shift...', 'load');
+  let p = pShift(b, PITCH);
+
+  setSt('Step 2/9: Speed change...', 'load');
+  await new Promise(r => setTimeout(r, 10));
+  p = rSpeed(p, SR, CUT);
+
+  setSt('Step 3/9: Stereo widening...', 'load');
+  await new Promise(r => setTimeout(r, 10));
+  p = sWiden(p, 1.3);
+
+  setSt('Step 4/9: Light chorus...', 'load');
+  await new Promise(r => setTimeout(r, 10));
+  p = lightChorus(p, 0.06);
+
+  setSt('Step 5/9: Room reverb...', 'load');
+  p = await cleanReverb(p, REVERB_DUR, 2.0);
+
+  setSt('Step 6/9: Smooth EQ...', 'load');
+  p = await smoothEQ(p);
+
+  setSt('Step 7/9: Light dither...', 'load');
+  await new Promise(r => setTimeout(r, 10));
+  p = lightDither(p, 0.0015);
+
+  setSt('Step 8/9: Anti-fingerprint...', 'load');
+  await new Promise(r => setTimeout(r, 10));
+  p = gainDb(p, -2.0);
+  p = antiFP(p, 0.04);
+
+  setSt('Step 9/9: Final polish...', 'load');
+  await new Promise(r => setTimeout(r, 10));
+  p = await lowPassFinal(p, 18000);
+  return normalize(p);
+}
+
+// ═══════════════════════════════════════════════════════════════
+// FILE FLOW
+// ═══════════════════════════════════════════════════════════════
+function resetSettings() {
+  $('setSpeed').value = '2.30';
+  $('setPitch').value = '1.2';
+  $('setCut').value = '0.15';
+  $('setReverb').value = '0.8';
+  setSt('Setting direset ke default', 'ok');
+  if (buf) reprocess();
+}
+
+async function reprocess() {
+  if (!buf) return;
+  try {
+    setSt('Reprocessing...', 'load');
+    pbuf = await processAudio(buf);
+    if (purl) URL.revokeObjectURL(purl);
+    purl = URL.createObjectURL(wavBuf(pbuf));
+    ap.src = purl; ap.playbackRate = 1.0;
+    $('fSDur').textContent = fmt(pbuf.duration);
+    $('totT').textContent = fmt(ap.duration || pbuf.duration);
+    $('rbSpeed').textContent = (1 / (parseFloat($('setSpeed').value) || SR_DEF)).toFixed(2);
+    setSt('Reprocess selesai!', 'ok');
+  } catch (err) { setSt('Error: ' + err.message, 'err'); }
+}
+
+function handleFile(f) {
+  if (!f || !f.type.startsWith('audio/')) { setSt('Bukan file audio.', 'err'); return; }
+  file = f;
+  if (purl) URL.revokeObjectURL(purl);
+  setSt('Loading...', 'load');
+  const r = new FileReader();
+  r.onload = async (e) => {
+    try {
+      await ensureAudioContext();
+      buf = await ac.decodeAudioData(e.target.result);
+      odur = buf.duration;
+      $('fName').textContent = f.name;
+      $('pName').textContent = f.name;
+      $('fDur').textContent = fmt(odur);
+      pbuf = await processAudio(buf);
+      purl = URL.createObjectURL(wavBuf(pbuf));
+      ap.src = purl; ap.playbackRate = 1.0;
+      $('fSDur').textContent = fmt(pbuf.duration);
+      $('totT').textContent = fmt(pbuf.duration);
+      $('rbSpeed').textContent = (1 / (parseFloat($('setSpeed').value) || SR_DEF)).toFixed(2);
+      $('infoCard').classList.remove('hidden');
+      $('playCard').classList.remove('hidden');
+      resizeCvs(); if (!aid) drawVis(); setupVis();
+      setSt('Ready', 'ok');
+    } catch (err) { setSt('Error: ' + err.message, 'err'); console.error(err); }
+  };
+  r.readAsArrayBuffer(f);
+}
+
+async function ensureAudioContext() {
+  if (ac.state === 'suspended') {
+    try { await Promise.race([ac.resume(), new Promise(r => setTimeout(r, 1500))]); } catch (e) { }
+  }
+}
+
+$('uploadZone').addEventListener('click', () => $('fileInput').click());
+$('fileInput').addEventListener('change', e => { if (e.target.files[0]) handleFile(e.target.files[0]); });
+$('uploadZone').addEventListener('dragover', e => { e.preventDefault(); $('uploadZone').classList.add('dragover'); });
+$('uploadZone').addEventListener('dragleave', () => $('uploadZone').classList.remove('dragover'));
+$('uploadZone').addEventListener('drop', e => { e.preventDefault(); $('uploadZone').classList.remove('dragover'); if (e.dataTransfer.files[0]) handleFile(e.dataTransfer.files[0]); });
+
+$('playBtn').addEventListener('click', async () => {
+  if (!ap.src) return;
+  await ensureAudioContext();
+  if (ap.paused) { ap.play(); $('playBtn').textContent = '||'; }
+  else { ap.pause(); $('playBtn').textContent = '▶'; }
+});
+ap.addEventListener('ended', () => { $('playBtn').textContent = '▶'; $('progFill').style.width = '0%'; });
+ap.addEventListener('timeupdate', () => { if (ap.duration) { $('progFill').style.width = (ap.currentTime / ap.duration * 100) + '%'; $('curT').textContent = fmt(ap.currentTime); } });
+ap.addEventListener('loadedmetadata', () => $('totT').textContent = fmt(ap.duration));
+$('progBar').addEventListener('click', e => { if (!ap.duration) return; const r = $('progBar').getBoundingClientRect(); ap.currentTime = ((e.clientX - r.left) / r.width) * ap.duration; });
+document.addEventListener('keydown', e => { if (e.code === 'Space' && !['INPUT', 'SELECT', 'TEXTAREA'].includes(document.activeElement.tagName)) { e.preventDefault(); $('playBtn').click(); } });
+
+$('copySpdBtn').addEventListener('click', () => {
+  const v = $('rbSpeed').textContent;
+  navigator.clipboard.writeText(v).then(() => { $('copySpdBtn').textContent = 'COPIED'; setTimeout(() => $('copySpdBtn').textContent = 'COPY', 1500); }).catch(() => setSt('Gagal copy', 'err'));
+});
+
+function encodeMP3(b) {
+  const nc = b.numberOfChannels, sr = b.sampleRate;
+  const enc = new lamejs.Mp3Encoder(nc, sr, 192);
+  const mp3 = [];
+  const blk = 1152;
+  const ld = b.getChannelData(0);
+  const rd = nc > 1 ? b.getChannelData(1) : ld;
+  for (let i = 0; i < b.length; i += blk) {
+    const lc = new Int16Array(blk), rc = nc > 1 ? new Int16Array(blk) : null;
+    for (let j = 0; j < blk; j++) {
+      if (i + j < b.length) {
+        lc[j] = Math.max(-32768, Math.min(32767, ld[i + j] * 32767));
+        if (rc) rc[j] = Math.max(-32768, Math.min(32767, rd[i + j] * 32767));
+      } else { lc[j] = 0; if (rc) rc[j] = 0; }
+    }
+    let mb;
+    if (nc > 1) { mb = enc.encodeBuffer(lc, rc); } else { mb = enc.encodeBuffer(lc); }
+    if (mb.length > 0) mp3.push(mb);
+  }
+  const fl = enc.flush();
+  if (fl.length > 0) mp3.push(fl);
+  return new Blob(mp3, { type: 'audio/mpeg' });
+}
+
+$('dlBtn').addEventListener('click', async () => {
+  if (!currentUser) { setSt('Login dulu untuk download.', 'err'); openLogin(); return; }
+  if (!pbuf || !file) { setSt('Upload file dulu.', 'err'); return; }
+  if (!canDownload()) { setSt('Limit download harian tercapai. Upgrade ke Premium.', 'err'); openPremium(); return; }
+
+  $('dlBtn').disabled = true; $('dlBtn').textContent = 'Encoding...';
+  setSt('Encoding MP3...', 'load');
+  try {
+    const mp3Blob = encodeMP3(pbuf);
+    const safeName = file.name.replace(/\.[^/.]+$/, '').replace(/[^\w\-. ]/g, '_')+ '_bypass.mp3';
+    const properBlob = new Blob([mp3Blob], { type: 'audio/mpeg' });
+    const url = URL.createObjectURL(properBlob);
+    const a = document.createElement('a');
+    a.href = url; a.download = safeName; a.type = 'audio/mpeg';
+    document.body.appendChild(a); a.click();
+    if (isMobile && /iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+      setTimeout(() => { window.open(url, '_blank'); }, 500);
+    }
+    document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(url), 5000);
+    incrementDownload();
+    setSt('Download OK (' + (mp3Blob.size / 1048576).toFixed(1) + ' MB)', 'ok');
+  } catch (err) { setSt('Error: ' + err.message, 'err'); }
+  finally { $('dlBtn').disabled = false; $('dlBtn').textContent = '⬇ Download MP3'; }
+});
+
+$('rbxBtn').addEventListener('click', () => {
+  if (isMobile) {
+    $('mobileTip').classList.remove('hidden');
+    setSt('Mode mobile: ikuti instruksi di bawah', 'ok');
+  } else {
+    window.open('https://create.roblox.com/dashboard/creations?activeTab=Audio', '_blank');
+    setSt('Roblox Creator Hub dibuka di tab baru', 'ok');
+  }
+});
+
+if (isMobile) {
+  $('shareRow').classList.remove('hidden');
+  $('mobileTip').classList.remove('hidden');
+}
+
+$('shareBtn').addEventListener('click', async () => {
+  if (!pbuf || !file) { setSt('Upload file dulu.', 'err'); return; }
+  try {
+    const mp3Blob = encodeMP3(pbuf);
+    const safeName = file.name.replace(/\.[^/.]+$/, '').replace(/[^\w\-. ]/g, '_')+ '_bypass.mp3';
+    const fileObj = new File([mp3Blob], safeName, { type: 'audio/mpeg' });
+    if (navigator.canShare && navigator.canShare({ files: [fileObj] })) {
+      await navigator.share({ files: [fileObj], title: 'MELLSMUSIC Audio', text: 'Anti-copyright bypass untuk Roblox' });
+      setSt('File dishare!', 'ok');
+    } else {
+      setSt('Browser tidak support share. Download manual.', 'err');
+    }
+  } catch (err) { setSt('Error: ' + err.message, 'err'); }
+});
+
+window.addEventListener('resize', resizeCvs);
+
+// Init
+checkAuth();
+</script>
 </body>
 </html>
